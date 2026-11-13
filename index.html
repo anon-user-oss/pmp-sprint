@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMP Sprint Drill</title>
+  <style>
+    body { background: #0f172a; color: #f8fafc; padding: 16px; font-family: -apple-system, sans-serif; max-width: 600px; margin: 0 auto; }
+    h1 { font-size: 1.15rem; color: #38bdf8; margin-bottom: 6px; }
+    .stats { font-size: 0.8rem; color: #94a3b8; margin-bottom: 14px; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 16px; margin-bottom: 14px; }
+    .meta { font-size: 0.72rem; color: #fca5a5; font-weight: bold; margin-bottom: 6px; text-transform: uppercase; }
+    .q { font-size: 0.96rem; margin-bottom: 14px; line-height: 1.45; }
+    .btn { display: block; width: 100%; background: #0f172a; color: #f8fafc; border: 1px solid #334155; border-radius: 6px; padding: 12px; text-align: left; font-size: 0.9rem; margin-bottom: 8px; cursor: pointer; }
+    .btn.correct { background: rgba(34, 197, 94, 0.2); border-color: #22c55e; color: #bbf7d0; }
+    .btn.wrong { background: rgba(239, 68, 68, 0.2); border-color: #ef4444; color: #fecaca; }
+    .rationale { font-size: 0.84rem; background: rgba(2, 132, 199, 0.15); border-left: 3px solid #38bdf8; padding: 12px; margin-top: 12px; display: none; line-height: 1.4; }
+    .next-btn { width: 100%; background: #38bdf8; color: #0f172a; border: none; border-radius: 6px; padding: 12px; font-weight: bold; font-size: 0.95rem; cursor: pointer; }
+    .next-btn:disabled { opacity: 0.3; }
+  </style>
+</head>
+<body>
+
+  <h1>PMP Mindset Drill</h1>
+  <div class="stats" id="stats">Question 1 of 12</div>
+
+  <div class="card">
+    <div class="meta" id="task-meta">Task</div>
+    <div class="q" id="q-text">Loading...</div>
+    <div id="opts"></div>
+    <div class="rationale" id="rat"></div>
+  </div>
+
+  <button class="next-btn" id="next-b" disabled onclick="nextQ()">Next Question →</button>
+
+  <script>
+    const db = [
+      { t: "Task 2.2 • Scope (Low)", q: "A stakeholder asks for a free 4-hour reporting widget during execution of a predictive project. The developer adds it. What should you do FIRST?", opts: ["Allow it since cost is zero.", "Evaluate impact and submit a formal change request.", "Reprimand the developer.", "Update the baseline immediately."], a: 1, m: "Baseline Integrity: Any scope change in predictive projects must go through formal change control." },
+      { t: "Task 2.3 • Value Delivery (Low)", q: "Sponsor is concerned stakeholders haven't seen tangible business benefits midway through a project. What is your best action?", opts: ["Wait until project closure.", "Crash the schedule.", "Collaborate to reprioritize deliverables for earlier incremental value.", "Submit a change request to cut scope."], a: 2, m: "Value Delivery: Deliver business value incrementally and as early as possible." },
+      { t: "Task 2.7 • Quality (Low)", q: "Recurring defects are causing rework and delays during quality control. What should you prioritize?", opts: ["Add more inspectors.", "Conduct root-cause analysis and update quality assurance processes to prevent defects.", "Use contingency for overtime.", "Escalate to sponsor."], a: 1, m: "Prevention over Inspection: Build quality into processes rather than relying solely on end-of-line checks." },
+      { t: "Task 2.5 • Procurement (Low)", q: "Three vendor proposals arrive for a high-risk security module: lowest price lacks experience; mid-price has proven expertise; premium price. How to choose?", opts: ["Pick lowest price.", "Evaluate against criteria balancing risk allocation and technical capability.", "Let sponsor pick.", "Split contract."], a: 1, m: "Procurement Value: Never default to the lowest-cost trap; balance risk and value." },
+      { t: "Task 2.1 • Integration (Low)", q: "Requirements are evolving rapidly, but regulatory sign-offs require strict milestone documentation. Which approach?", opts: ["Pure predictive.", "Pure agile.", "Tailored hybrid combining iterative delivery with governance gates.", "Delay planning."], a: 2, m: "Tailoring: Tailor delivery approaches to fit project uncertainty and organizational governance." },
+      { t: "Task 2.6 • Finance (Low)", q: "An unexpected regulatory mandate requires an unbudgeted encryption layer. Which funding source covers this?", opts: ["Contingency reserve.", "Management reserve, requested through formal change control.", "Baseline padding.", "Ops budget."], a: 1, m: "Reserve Governance: Unforeseen in-scope work uses management reserves requiring formal approval." },
+      { t: "Task 3.2 • Compliance (Low)", q: "A team member notices a newly enacted data privacy regulation affecting storage, though audit is next year. What do you FIRST?", opts: ["Wait for the audit.", "Assess requirement, evaluate noncompliance impact, and integrate controls.", "Log as low priority.", "Request a waiver."], a: 1, m: "Proactive Compliance: Proactively integrate compliance controls; never wait for an audit." },
+      { t: "Task 3.7 • Org Change (Low)", q: "Replacing a legacy tool for 400 staff; tech testing is green, but supervisors are skeptical. Best action?", opts: ["Launch on schedule and mandate usage.", "Assess cultural readiness, identify resistance, and execute targeted engagement/training.", "Delay indefinitely.", "Close project."], a: 1, m: "Organizational Readiness: Assess readiness and engage stakeholders before rolling out changes." },
+      { t: "Task 3.8 • External Env (Low)", q: "A competitor releases a disruptive tech midway through, making two planned features obsolete. What do you FIRST?", opts: ["Keep building signed-off scope.", "Evaluate impact on business value and collaborate to reprioritize backlog.", "Cancel project.", "Hide news."], a: 1, m: "External Vigilance: Continuously scan the environment and adapt backlogs when conditions shift." },
+      { t: "Task 3.4 & 3.5 • Risk vs Issue (Med)", q: "A key vendor shipment is delayed at customs today, blocking tomorrow's test. How to handle?", opts: ["Add to risk register.", "Log in issue log, evaluate impact, and collaborate on workaround options.", "Escalate to sponsor.", "Trigger contingency."], a: 1, m: "Risk vs. Issue: Once a risk happens, it is an issue. Log it and remove blockers immediately." },
+      { t: "Task 1.1 • Common Vision (Low)", q: "Two department heads argue over project success during review—one measures speed, one measures zero defects. First step?", opts: ["Side with authority.", "Facilitate discussion to uncover root cause and establish shared vision.", "Refer to charter.", "Work overtime."], a: 1, m: "Shared Vision: Diagnose root causes of stakeholder misalignment to build consensus." },
+      { t: "Task 1.3 • Lead Team (Low)", q: "An agile team is stuck debating two technical architectures, delaying standups. As a servant leader:", opts: ["Make the decision for them.", "Facilitate a workshop empowering the team to evaluate trade-offs.", "Escalate to architecture board.", "Extend standups."], a: 1, m: "Servant Leadership: Coach, facilitate, and empower the team rather than dictating solutions." }
+    ];
+
+    let idx = 0;
+
+    function render() {
+      const item = db[idx];
+      document.getElementById("task-meta").textContent = item.t;
+      document.getElementById("q-text").textContent = item.q;
+      document.getElementById("stats").textContent = `Question ${idx + 1} of ${db.length}`;
+      document.getElementById("rat").style.display = "none";
+      document.getElementById("next-b").disabled = true;
+
+      let html = "";
+      item.opts.forEach((o, i) => {
+        html += `<button class="btn" onclick="check(${i}, ${item.a}, this)">${String.fromCharCode(65 + i)}. ${o}</button>`;
+      });
+      document.getElementById("opts").innerHTML = html;
+    }
+
+    function check(selected, correct, el) {
+      const all = document.querySelectorAll(".btn");
+      all.forEach(b => b.onclick = null);
+      
+      if (selected === correct) {
+        el.classList.add("correct");
+      } else {
+        el.classList.add("wrong");
+        all[correct].classList.add("correct");
+      }
+      
+      document.getElementById("rat").innerHTML = `<strong>Mindset Takeaway:</strong> ${db[idx].m}`;
+      document.getElementById("rat").style.display = "block";
+      document.getElementById("next-b").disabled = false;
+    }
+
+    function nextQ() {
+      idx = (idx + 1) % db.length;
+      render();
+    }
+
+    render();
+  </script>
+</body>
+</html>
