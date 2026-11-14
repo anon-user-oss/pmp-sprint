@@ -214,7 +214,909 @@
       { id: 97, mode: "HARD", domain: "PEOPLE", tag: "Task 1.3: Servant Leadership vs. Rescuing", q: "An experienced agile team is two days away from a critical sprint demo when a database migration script fails repeatedly. Two senior developers begin arguing heatedly in the team channel about whether to roll back the schema or patch the script, paralyzing progress. As a servant leader, what should you do FIRST?", opts: ["Make the technical call to roll back the schema so the team doesn't miss the demo.", "Step in to de-escalate the tension, facilitate a brief time-boxed problem-solving huddle so the team evaluates trade-offs and owns the decision, and clear any external impediments.", "Report both developers to their functional engineering managers for unprofessional behavior.", "Cancel the sprint demo and reschedule it for next week."], a: 1, m: "Task 1.3 (Lead a Team): Servant leaders do NOT dictate technical solutions; de-escalate emotion and facilitate a structured team decision." },
       { id: 98, mode: "HARD", domain: "PEOPLE", tag: "Task 1.3: Psychological Safety & Culture", q: "During sprint retrospectives, a newly merged team of onshore and offshore engineers remains silent whenever you ask what could be improved, even though sprint commitments have been missed three times in a row. Later, an offshore developer privately messages you that teammates fear public criticism from senior onshore leads. What should you do?", opts: ["Read the offshore developer's feedback aloud anonymously at the next retrospective and confront the onshore leads.", "Redesign the retrospective format using anonymous silent brainstorming, co-create Team Charter norms around psychological safety and blameless learning, and coach senior leads on inclusive facilitation.", "Hold separate retrospectives for onshore and offshore engineers permanently.", "Ask HR to conduct mandatory sensitivity training."], a: 1, m: "Psychological Safety & Team Norms: Use structured anonymous facilitation and establish explicit Team Charter norms for blameless collaboration." },
       { id: 99, mode: "HARD", domain: "PEOPLE", tag: "Task 1.1: Product Owner Alignment", q: "In a hybrid product rollout, a newly hired Product Owner reprioritizes the entire Q3 release backlog to focus on sleek mobile UI animations, pushing back core backend compliance and billing stability stories requested by Finance and Operations. Finance threatens to withdraw project funding. What should you do?", opts: ["Tell Finance that the Product Owner has absolute authority over the backlog and cannot be overruled.", "Facilitate a value-alignment session between the Product Owner, Finance, Operations, and the sponsor to evaluate strategic risk, compliance dependencies, and business value across the backlog.", "Override the Product Owner and move the Finance stories back to the top of the sprint.", "Ask the development team to secretly work on Finance stories during spare capacity."], a: 1, m: "Collaborative Vision Alignment: Facilitate a transparent value-and-risk trade-off discussion before funding or compliance is jeopardized." },
-      { id: 100, mode: "HARD", domain: "PEOPLE", tag: "Task 1.3: Situational Leadership", q: "Six months ago, you took over a newly formed hybrid team that lacked agile experience and required heavy hands-on coaching, daily facilitation, and structured guidance. Today, the team consistently meets sprint goals, resolves cross-functional dependencies proactively, and self-organizes effectively. How should you adapt your leadership approach?", opts: ["Maintain the exact same directive oversight to ensure performance never slips.", "Transition toward a delegating and empowering servant-leadership style, stepping back from daily execution decisions while focusing on strategic alignment and organizational impediment removal.", "Assign the most senior developer as a formal sub-manager to enforce rules.", "Increase status reporting frequency to track their autonomy."], a: 1, m: "Situational Leadership (Hersey-Blanchard): As team competence and commitment mature, shift from Coaching/Directing to Delegating." }
+      { id: 100, mode: "HARD", domain: "PEOPLE", tag: "Task 1.3: Situational Leadership", q: "Six months ago, you took over a newly formed hybrid team that lacked agile experience and required heavy hands-on coaching, daily facilitation, and structured guidance. Today, the team consistently meets sprint goals, resolves cross-functional dependencies proactively, and self-organizes effectively. How should you adapt your leadership approach?", opts: ["Maintain the exact same directive oversight to ensure performance never slips.", "Transition toward a delegating and empowering servant-leadership style, stepping back from daily execution decisions while focusing on strategic alignment and organizational impediment removal.", "Assign the most senior developer as a formal sub-manager to enforce rules.", "Increase status reporting frequency to track their autonomy."], a: 1, m: "Situational Leadership (Hersey-Blanchard): As team competence and commitment mature, shift from Coaching/Directing to Delegating." }, // ==================== DEEP-DIVE PEOPLE 1.1 & 1.3 (101 - 120) ====================
+      {
+        id: 101,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Root-Cause Misalignment",
+        q: "Midway through an enterprise data-lake rollout, the VP of Marketing and the VP of Finance clash during a steering committee review over what constitutes 'customer churn' in the executive dashboard. Marketing defines churn as 60 days of inactivity, whereas Finance defines it as a formal subscription cancellation. Both VPs insist their definition was agreed upon during project initiation, and the engineering team is blocked from finalizing the data model. What should you do FIRST?",
+        opts: [
+          "Ask the project sponsor to issue an executive decision selecting Finance's definition since financial reporting is audited.",
+          "Review the Project Charter, Business Requirements Document, and Requirements Traceability Matrix to verify documented definitions, then facilitate a joint working session with both VPs to establish a single consensus definition.",
+          "Instruct the engineering team to build two separate churn metrics into the dashboard so both departments are satisfied.",
+          "Log a high-priority issue in the issue log and escalate the deadlock to the enterprise governance board."
+        ],
+        a: 1,
+        m: "Task 1.1 (Diagnose & Align): Never pick a side or build duplicate scope ('gold plating'). Check existing baseline artifacts first to see what was documented, then facilitate a joint alignment session to lock down one shared understanding."
+      },
+      {
+        id: 102,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Charter & Scope Boundary",
+        q: "You inherit a cross-functional ERP integration project at the end of Phase 1. During your initial one-on-one meetings, you discover that the IT Infrastructure Lead believes the project's primary goal is decommissioning three legacy servers, while the Supply Chain Director expects automated vendor-ordering workflows to be live before Q4. Neither stakeholder has read the signed Project Charter. What should you do NEXT?",
+        opts: [
+          "Email copies of the signed Project Charter to both stakeholders and ask them to sign an acknowledgment receipt.",
+          "Convene a joint stakeholder alignment workshop to walk through the Project Charter, Business Case, and high-level deliverables so all key stakeholders share one unified vision.",
+          "Update the Project Charter to include both server decommissioning and automated vendor ordering.",
+          "Meet with the development team to see which deliverable is currently prioritized in the backlog."
+        ],
+        a: 1,
+        m: "Task 1.1 (Active Consensus): Sending an email doesn't build shared understanding. Bring misaligned stakeholders together to review the Charter and co-validate shared project objectives."
+      },
+      {
+        id: 103,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Implicit Assumptions",
+        q: "During a sprint demo for a hospital patient-intake portal, the Chief Nursing Officer expresses frustration that the triage screen lacks an automated insurance-verification alert. The Product Owner responds that insurance verification belongs to Phase 2 billing, while the Chief Nursing Officer assumed 'patient intake' inherently included coverage checks. What should the project manager have done to prevent this misunderstanding?",
+        opts: [
+          "Added the insurance-verification alert to the current sprint backlog as soon as nursing stakeholders joined the demo.",
+          "Facilitated collaborative scope and acceptance-criteria workshops during initiation and release planning to surface hidden assumptions and establish an explicit Definition of Done.",
+          "Required the Chief Nursing Officer to submit a formal change request before attending sprint demos.",
+          "Asked the sponsor to clarify clinical requirements on behalf of the nursing department."
+        ],
+        a: 1,
+        m: "Task 1.1 (Preventing Assumption Gaps): Hidden assumptions cause late-stage friction. Proactive alignment workshops and explicit acceptance criteria surface conflicting mental models early."
+      },
+      {
+        id: 104,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Cross-Cultural Terminology",
+        q: "You are leading a hybrid merger-integration project uniting a US software firm and a European logistics company. Three weeks into execution, tasks marked 'Committed' by the US engineering leads are treated as firm contractual deadlines by the European operations leads, while US leads view them as agile sprint forecasts. Friction is escalating rapidly. What should you do FIRST?",
+        opts: [
+          "Enforce the European definition of 'Committed' across the entire program to protect milestone dates.",
+          "Facilitate a cross-team working session to surface the terminology mismatch, establish a shared glossary of delivery commitments, and document the agreed norms in the Team Charter and Communications Management Plan.",
+          "Replace the word 'Committed' with 'Estimated' in all project management tools immediately.",
+          "Hold separate status meetings for the US and European teams to prevent arguments."
+        ],
+        a: 1,
+        m: "Task 1.1 (Shared Language): When teams interpret core terms differently, don't unilaterally dictate definitions or isolate teams—facilitate alignment around a shared lexicon and codify it in team agreements."
+      },
+      {
+        id: 105,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Sponsor Bypassing Governance",
+        q: "In a hybrid product development project, your executive sponsor regularly attends Friday demos and directly asks UX designers to tweak navigation layouts over the weekend. By Monday morning, the designers have shifted capacity away from core API stories, causing the Product Owner to complain that release goals are slipping. What should you do FIRST?",
+        opts: [
+          "Instruct the UX designers to ignore any requests coming directly from the executive sponsor.",
+          "Meet privately with the executive sponsor to align on product vision and backlog governance, demonstrating how direct ad-hoc requests undermine their own strategic release priorities.",
+          "Add a 20% capacity buffer to every sprint to absorb the sponsor's weekend layout requests.",
+          "Escalate the sponsor's behavior to the PMO Director."
+        ],
+        a: 1,
+        m: "Task 1.1 (Aligning Leadership Expectations): Never tell team members to ignore a sponsor, and don't pad sprints. Educate the sponsor collaboratively on how unified backlog prioritization protects their strategic outcomes."
+      },
+      {
+        id: 106,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Conflicting Success Metrics",
+        q: "At the midpoint of an internal AI customer-support implementation, the Call Center Director measures project success by reducing average call handle time by 30%, while the Customer Experience VP measures success by raising post-call Net Promoter Score (NPS) by 15 points. Agents complain that rushing calls to hit handle-time targets is tanking NPS scores. What is your best action?",
+        opts: [
+          "Focus exclusively on reducing handle time because it delivers hard operational cost savings.",
+          "Facilitate a strategic alignment session with both leaders and the sponsor to reconcile the competing KPIs and establish a balanced, mutually agreed set of project success criteria.",
+          "Ask the AI vendor which metric their software is optimized to improve.",
+          "Remove NPS tracking from the project's Benefits Management Plan."
+        ],
+        a: 1,
+        m: "Task 1.1 (Reconciling Competing Visions): When two leaders optimize conflicting KPIs, facilitate a joint value-alignment session to agree on balanced success criteria anchored to the Business Case."
+      },
+      {
+        id: 107,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Vendor & Internal Alignment",
+        q: "An external systems integrator is building a custom warehouse inventory module under a hybrid contract. During Sprint 5 integration, your internal QA lead rejects the vendor's build because it lacks automated regression scripts, whereas the vendor's project manager insists their Statement of Work (SOW) only covers manual functional testing. What should you do FIRST?",
+        opts: [
+          "Withhold the vendor's milestone invoice until automated regression scripts are delivered.",
+          "Review the contract SOW and Definition of Done with both the internal QA lead and vendor PM to clarify contractual obligations and align on testing expectations.",
+          "Submit a formal change request to pay the vendor extra for automated regression scripts.",
+          "Have your internal QA team write the automated scripts themselves to avoid delaying the sprint."
+        ],
+        a: 1,
+        m: "Task 1.1 (Contractual Shared Understanding): Before withholding payment or issuing change requests, verify what the SOW and Definition of Done actually state and facilitate alignment between internal and vendor leads."
+      },
+      {
+        id: 108,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Silent Stakeholder Drift",
+        q: "A senior regulatory compliance manager rarely attends your biweekly stakeholder alignment sessions, sending a junior analyst instead. Two weeks before user acceptance testing, the compliance manager reviews a prototype and declares that the audit-trail logging format violates internal governance standards, requiring major rework. What should you do NEXT?",
+        opts: [
+          "Remind the compliance manager that their junior analyst attended all sessions and raised no objections.",
+          "Meet directly with the compliance manager to understand the exact governance gap, assess impact with the team, and update the Stakeholder Engagement Plan to secure direct sign-off at key checkpoints.",
+          "Ask the sponsor to grant an exception for this release.",
+          "Remove the junior analyst from future project meetings."
+        ],
+        a: 1,
+        m: "Task 1.1 (Engagement & Alignment): Pointing out that a delegate attended is defensive. Engage the decision-maker directly to clarify requirements, assess rework impact, and fix your Stakeholder Engagement Plan."
+      },
+      {
+        id: 109,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Multi-Department Handover",
+        q: "Your project is deploying a predictive maintenance platform across four manufacturing plants. Plant A and Plant B expect your project team to configure all local equipment sensors, whereas Plant C and Plant D assumed their local plant engineers would perform sensor configuration post-handover. What should you do?",
+        opts: [
+          "Configure sensors for Plant A and Plant B only, since they requested it first.",
+          "Convene representatives from all four plants and the sponsor to review the RACI matrix and scope baseline, establishing a consistent, agreed-upon responsibility model across all sites.",
+          "Use management reserves to hire contractors to configure sensors at all four plants.",
+          "Defer sensor configuration to post-project operations for all four plants."
+        ],
+        a: 1,
+        m: "Task 1.1 (Role & Responsibility Alignment): Use the RACI matrix and scope baseline in a joint session to eliminate ambiguity and lock in consistent expectations across all stakeholder groups."
+      },
+      {
+        id: 110,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 • Purpose & Vision Disconnect",
+        q: "During a retrospective, several developers express frustration that they are blindly building isolated technical tickets without understanding how the product solves end-user pain points, leading to poor design choices and frequent rework. What is the best action for the project manager?",
+        opts: [
+          "Write more detailed technical specifications for every user story.",
+          "Collaborate with the Product Owner to host a product-vision and customer-journey session connecting the development team directly with end-user workflows and business outcomes.",
+          "Pair junior developers with senior architects for stricter code reviews.",
+          "Increase story point buffers for complex technical tickets."
+        ],
+        a: 1,
+        m: "Task 1.1 (Shared Product Vision): Shared understanding isn't just for executives—developers make better autonomous decisions when connected directly to the product vision and customer outcomes."
+      },
+      {
+        id: 111,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Servant Leadership vs. Control",
+        q: "You are leading a self-organizing agile team of eight senior engineers. Midway through a critical release, two back-end engineers disagree sharply on whether to use event-driven messaging or REST polling for a high-volume microservice, stalling sprint progress for two days. Both engineers ask you to make the final architectural decision so they can move forward. As a servant leader, how should you respond?",
+        opts: [
+          "Evaluate both options quickly and select REST polling to eliminate the bottleneck immediately.",
+          "Facilitate a time-boxed technical decision workshop where the team defines evaluation criteria (scalability, latency, maintenance) and reaches consensus on the architectural choice.",
+          "Escalate the decision to the Chief Technology Officer.",
+          "Ask the Product Owner to pick whichever option takes fewer story points."
+        ],
+        a: 1,
+        m: "Task 1.3 (Empowering Team Ownership): Even when invited to dictate a technical answer, a servant leader resists rescuing and instead facilitates a structured decision process so the team owns the outcome."
+      },
+      {
+        id: 112,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Toxic High Performer",
+        q: "Your lead database architect consistently delivers complex tasks ahead of schedule, but during daily standups and pull-request reviews she frequently mocks junior developers' questions. Two junior engineers have privately asked to transfer off the project. What should you do FIRST?",
+        opts: [
+          "Reassign the two junior engineers to another squad so they can work comfortably.",
+          "Meet privately with the lead database architect using emotional intelligence to provide direct feedback on how her behavior impacts team psychological safety and collaboration, and reinforce Team Charter norms.",
+          "Publicly call out the lead architect during the next sprint retrospective to set an example.",
+          "Report the lead architect to Human Resources for immediate disciplinary action."
+        ],
+        a: 1,
+        m: "Task 1.3 (Emotional Intelligence & Team Health): Address interpersonal behavior privately, empathetically, and directly first—protecting psychological safety without public shaming or premature escalation."
+      },
+      {
+        id: 113,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Coaching a Storming Team",
+        q: "A newly assembled cross-functional team is in its second sprint. Daily standups routinely run 45 minutes as members debate implementation details, blame each other for missed handoffs, and look to you for task assignments. Which leadership approach is most effective right now?",
+        opts: [
+          "Step back completely and let the team figure out how to self-organize through trial and error.",
+          "Adopt a hands-on coaching and facilitating approach—clarifying agile roles, modeling time-boxed standup discipline, and guiding the team to co-create working agreements in a Team Charter.",
+          "Switch to a directive command-and-control style and assign daily tasks individually.",
+          "Replace team members who struggle with self-organization."
+        ],
+        a: 1,
+        m: "Task 1.3 (Tuckman Storming Stage): A team in 'Storming' needs active coaching, clear role boundaries, and collaborative working agreements—neither rigid micromanagement nor premature abandonment."
+      },
+      {
+        id: 114,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Functional Manager Poaching",
+        q: "You are managing a high-priority predictive cybersecurity upgrade in a weak matrix organization. Without notifying you, the Network Operations Manager assigns your sole firewall engineer to spend 60% of her week on routine operational tickets, threatening a critical-path milestone next Friday. What should you do FIRST?",
+        opts: [
+          "Escalate the Network Operations Manager's interference to the project sponsor immediately.",
+          "Meet directly with the Network Operations Manager to review the agreed resource allocation, explain the critical-path impact, and collaboratively negotiate coverage.",
+          "Tell the firewall engineer to ignore the operational tickets and focus solely on your project.",
+          "Submit a change request to push the project milestone out by three weeks."
+        ],
+        a: 1,
+        m: "Task 1.3 (Peer-Level Negotiation): Never put a matrixed team member in the middle between two bosses, and don't escalate over a peer's head first. Negotiate directly with the functional manager using objective schedule impact."
+      },
+      {
+        id: 115,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Burnout & Sustainable Pace",
+        q: "Over the last three iterations, your agile team has worked nights and weekends to hit aggressive release commitments. Velocity spiked initially but dropped 25% this sprint, defect rates doubled, and team morale is visibly low. The Product Owner wants to add one more high-priority feature to the upcoming sprint to appease an executive stakeholder. What should you do?",
+        opts: [
+          "Encourage the team to push through one final sprint and offer spot bonuses afterward.",
+          "Coach the Product Owner and stakeholders on sustainable pace, use empirical velocity and defect data to right-size sprint commitments, and protect the team from overload.",
+          "Hire two temporary contractors to join the team for the upcoming sprint.",
+          "Cancel the upcoming sprint retrospective so the team has extra coding hours."
+        ],
+        a: 1,
+        m: "Task 1.3 (Servant Leadership & Sustainable Pace): Agile sustainable pace protects long-term quality and morale. Use empirical data (falling velocity + rising defects) to reset expectations with the PO."
+      },
+      {
+        id: 116,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Distributed Inclusion Bias",
+        q: "Your hybrid project team consists of six engineers co-located at headquarters and four engineers working remotely from another country. During planning sessions, the co-located group frequently holds side conversations in the conference room and makes informal architecture decisions without looping in the remote engineers, causing frustration and rework. What should you do?",
+        opts: [
+          "Assign independent, non-overlapping modules to the remote engineers so they don't need to coordinate with headquarters.",
+          "Establish 'remote-first' collaboration norms in the Team Charter—requiring everyone to join calls individually on laptops, documenting decisions in shared digital channels, and ensuring equal facilitation.",
+          "Mandate that the remote engineers adjust their working hours to match headquarters' core hours.",
+          "Ask the co-located tech lead to summarize decisions at the end of each week."
+        ],
+        a: 1,
+        m: "Task 1.3 (Inclusive Virtual Leadership): 'One remote, all remote' practices and transparent digital decision logs eliminate proximity bias and build cohesive team trust."
+      },
+      {
+        id: 117,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Delegation & Decision Guardrails",
+        q: "A newly promoted tech lead on your project escalates every minor vendor question and UI layout choice to you for approval, creating a decision bottleneck that slows down the team. You want to empower the tech lead while maintaining appropriate project governance. What is your best approach?",
+        opts: [
+          "Tell the tech lead to stop bringing operational questions to you and make all decisions independently.",
+          "Coach the tech lead by defining clear decision-making guardrails and escalation thresholds, empowering them to own technical/operational choices within those boundaries while offering mentoring support.",
+          "Review their decisions at the end of every day to ensure they didn't make mistakes.",
+          "Reassign decision authority back to a more senior engineer."
+        ],
+        a: 1,
+        m: "Task 1.3 (Empowerment with Guardrails): Effective delegation isn't 'sink or swim'—establish clear authority boundaries and coach the team member so they build confidence safely."
+      },
+      {
+        id: 118,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Conflict Style Selection",
+        q: "Two days before a major regulatory compliance audit, two quality analysts get into a heated disagreement over the formatting style of an internal appendix document that has zero impact on regulatory compliance or audit pass criteria. Time is critically short. Which conflict resolution technique is most appropriate in this specific moment?",
+        opts: [
+          "Collaborate / Problem-Solve by holding a two-hour consensus workshop.",
+          "Smooth / Accommodate (or Compromise) to quickly de-emphasize the minor formatting difference so the team stays focused on passing the urgent compliance audit.",
+          "Withdraw / Avoid and let them argue until the audit begins.",
+          "Force one analyst's template permanently for all future projects."
+        ],
+        a: 1,
+        m: "Task 1.3 (Situational Conflict Resolution): While Collaborate is PMI's default for major issues, when stakes are trivial and a hard deadline is imminent, Smoothing/Compromising preserves harmony and keeps focus on the critical goal."
+      },
+      {
+        id: 119,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.3 • Motivation & Recognition",
+        q: "You are leading a talented team of specialists on a grueling, nine-month legacy mainframe migration with strict regulatory constraints and little room for creative new features. Midway through, engagement and energy begin dipping. According to PMI leadership principles, what is the most sustainable way to re-energize the team?",
+        opts: [
+          "Promise everyone a large cash bonus upon final project sign-off.",
+          "Connect their work to higher organizational purpose, recognize individual and team milestones publicly, remove daily bureaucratic impediments, and give them autonomy over how they execute technical tasks.",
+          "Increase the frequency of status check-ins to maintain accountability.",
+          "Threaten performance reviews if sprint velocity drops further."
+        ],
+        a: 1,
+        m: "Task 1.3 (Intrinsic Motivation): PMI emphasizes intrinsic motivators—autonomy, mastery, purpose, meaningful recognition, and impediment removal—over transactional rewards or pressure."
+      },
+      {
+        id: 120,
+        mode: "HARD",
+        domain: "PEOPLE",
+        tag: "Task 1.1 & 1.3 • Combined Trap",
+        q: "During a hybrid program's quarterly planning event, two agile teams discover their deliverables have a critical API dependency, but each team's Product Owner has scheduled their side of the work in different sprints—creating a three-week delivery gap. The two tech leads begin arguing over whose team should absorb the schedule disruption. What should you do FIRST?",
+        opts: [
+          "Direct the downstream team to delay their sprint by three weeks to match the upstream team.",
+          "Facilitate a joint dependency-mapping session bringing both Product Owners and both teams together to align on shared program objectives, evaluate sequencing trade-offs, and agree on a coordinated delivery plan.",
+          "Escalate the dependency conflict to the program sponsor to decide which team changes its sprint plan.",
+          "Log the dependency in the risk register and revisit it at the next quarterly planning event."
+        ],
+        a: 1,
+        m: "Task 1.1 + 1.3 Integration: Bring all affected roles (both POs + both teams) together to establish a shared understanding of the dependency impact and collaboratively solve the sequencing trade-off."
+      }, // ==================== DEEP-DIVE PROCESS 2.1 - 2.10 (121 - 135) ====================
+      {
+        id: 121,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.1 • Execute with Urgency / Value",
+        q: "You are leading a hybrid enterprise analytics platform where core regulatory reporting modules follow a predictive phase-gate schedule, while front-end visualization dashboards are built in two-week sprints. Halfway through the 10-month timeline, the sponsor expresses concern that business executives have seen zero usable dashboards yet, even though backend data-warehouse milestones are 100% green. What should you do FIRST?",
+        opts: [
+          "Explain to the sponsor that dashboard value cannot be realized until the entire predictive data-warehouse phase concludes.",
+          "Collaborate with the Product Owner and technical leads to identify a high-value, minimum viable subset of data pipelines and dashboard views that can be released incrementally right away.",
+          "Submit a formal change request to convert the entire data-warehouse build into an agile Scrum project.",
+          "Crash the backend database schedule using management reserves so dashboards start earlier."
+        ],
+        a: 1,
+        m: "Task 2.1 (Incremental Value Delivery): Even in hybrid environments, look for opportunities to slice deliverables and release incremental business value early rather than deferring all value until the end."
+      },
+      {
+        id: 122,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.2 • Communications Management",
+        q: "During a multi-vendor cloud modernization project, your team publishes daily burn-down charts in Jira, sends a weekly PDF executive summary every Friday, and hosts a biweekly sprint review. Despite this, the Chief Information Security Officer (CISO) escalates to the sponsor that she was unaware of a critical firewall architecture change approved two sprints ago. Examining the Stakeholder Register shows the CISO has high power and high interest, and prefers brief, decision-focused executive briefings rather than technical Jira boards. What should you do NEXT?",
+        opts: [
+          "Send the CISO copies of the Friday PDF summaries and sprint review invites showing the firewall update was included.",
+          "Meet with the CISO to confirm her exact information needs, update the Communications Management Plan to establish a targeted security briefing cadence, and share a concise summary of the firewall change.",
+          "Add the CISO to the daily technical standup calls so she hears architecture updates firsthand.",
+          "Ask the Product Owner to stop approving security-related stories until the CISO attends sprint reviews."
+        ],
+        a: 1,
+        m: "Task 2.2 (Tailored Communications): When a high-power stakeholder misses critical information, proving you sent generic reports solves nothing. Revisit stakeholder communication preferences and update the Communications Management Plan."
+      },
+      {
+        id: 123,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.3 • Risk Identification & Response",
+        q: "During sprint planning for a fintech mobile payment app, a senior payment-gateway engineer mentions that a key third-party card processor plans to deprecate its legacy v2 API sometime in Q4, though no exact cutoff date has been published. Your app relies heavily on the v2 API for transaction settlement. What should the project manager do FIRST?",
+        opts: [
+          "Instruct the team to immediately halt feature development and migrate to the v3 API during the current sprint.",
+          "Log the potential API deprecation in the risk register, facilitate qualitative and quantitative impact/probability analysis with technical leads, and assign a risk owner to develop a response plan.",
+          "Escalate the vendor's deprecation notice to the legal department to demand an extension.",
+          "Use contingency reserves to hire an external API integration consultant immediately."
+        ],
+        a: 1,
+        m: "Task 2.3 (Assess & Manage Risks): Because the cutoff date is uncertain, this is a RISK, not an active issue. Follow PMI's exact risk sequence: Identify -> Log -> Analyze probability/impact -> Assign owner -> Plan response."
+      },
+      {
+        id: 124,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.4 • Engage Stakeholders",
+        q: "Three months into a predictive hospital EHR upgrade, a vocal group of emergency-room physicians begins resisting the new clinical triage workflow, claiming it adds extra clicks during trauma intake. Although the nursing director signed off on all requirements during planning, the ER physicians were categorized as 'Monitor' on the Stakeholder Engagement Assessment Matrix. What should you do FIRST?",
+        opts: [
+          "Remind the ER physicians that the nursing director already approved the signed-off scope baseline.",
+          "Reassess the ER physicians' power and interest, update the Stakeholder Register and Engagement Plan, and facilitate a collaborative workshop with them and the Product Owner/clinical lead to address workflow friction.",
+          "Submit a change request to redesign the triage screens immediately.",
+          "Ask the hospital Chief Medical Officer to mandate physician compliance."
+        ],
+        a: 1,
+        m: "Task 2.4 (Dynamic Stakeholder Engagement): Stakeholder power and interest shift during execution. When an underestimated group resists, update their engagement assessment and involve them collaboratively before jumping to scope changes."
+      },
+      {
+        id: 125,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.5 • Plan & Manage Budget / Resources",
+        q: "Your predictive hardware-manufacturing project has a Budget at Completion (BAC) of $800,000. At the end of Month 4, Earned Value (EV) is $300,000, Planned Value (PV) is $320,000, and Actual Cost (AC) is $375,000. Investigation shows that a newly negotiated union labor rate increase caused the cost overrun and will remain in effect for the remainder of the project. What is the most accurate Estimate at Completion (EAC)?",
+        opts: [
+          "$875,000",
+          "$1,000,000",
+          "$853,333",
+          "$920,000"
+        ],
+        a: 1,
+        m: "Task 2.5 (EVM Forecasting): Because the labor rate increase WILL CONTINUE for the rest of the project ('typical' variance), use EAC = BAC / CPI. CPI = EV / AC = $300k / $375k = 0.80. EAC = $800,000 / 0.80 = $1,000,000."
+      },
+      {
+        id: 126,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.5 • Resource Allocation & Smoothing",
+        q: "During schedule development for a predictive telecom tower rollout, you notice that your single certified RF safety inspector is scheduled for 16 hours per day across two parallel critical-path tasks on Thursday and Friday, while having zero hours scheduled the following Monday and Tuesday. You cannot hire a second inspector and must protect the contractual launch date if possible. What should you try FIRST?",
+        opts: [
+          "Apply resource leveling, even though it will extend the critical path beyond the contractual launch date.",
+          "Evaluate resource smoothing within available float on non-critical activities first, or examine splitting/re-sequencing tasks before extending the project end date.",
+          "Require the RF inspector to work 16-hour shifts for two days.",
+          "Remove the RF safety inspection from one of the towers."
+        ],
+        a: 1,
+        m: "Task 2.5 (Resource Optimization): Resource smoothing adjusts activities only within available float so the project end date is preserved; resource leveling resolves overallocations even if it pushes out the critical path."
+      },
+      {
+        id: 127,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.6 • Plan & Manage Schedule",
+        q: "In a predictive aerospace component build, Activity D (6 days) and Activity E (10 days) both depend on Activity C (3 days). Activity F (5 days) depends on both D and E, and leads to final inspection Activity G (2 days). Due to a supplier tool calibration issue, Activity D is delayed by 3 days. What is the impact on the overall project schedule?",
+        opts: [
+          "The project is delayed by 3 days because Activity D is delayed.",
+          "The project schedule is unaffected because Activity D has 4 days of total float.",
+          "The project is delayed by 1 day.",
+          "Activity E must be crashed by 3 days to compensate."
+        ],
+        a: 1,
+        m: "Task 2.6 (Critical Path & Float): Path C-E-F-G = 3 + 10 + 5 + 2 = 20 days (Critical Path). Path C-D-F-G = 3 + 6 + 5 + 2 = 16 days, giving Activity D 4 days of float. A 3-day delay consumes float without affecting the 20-day finish."
+      },
+      {
+        id: 128,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.6 • Agile Release Forecasting",
+        q: "An agile product team has completed five two-week sprints with velocities of 28, 32, 30, 26, and 34 story points. The Product Backlog currently contains 180 story points of remaining scope, and the Product Owner just added 30 story points of mandatory regulatory compliance stories. Assuming no further scope changes, how many additional sprints should you forecast to complete the backlog?",
+        opts: [
+          "6 sprints",
+          "7 sprints",
+          "8 sprints",
+          "5 sprints"
+        ],
+        a: 1,
+        m: "Task 2.6 (Empirical Agile Forecasting): Average velocity = (28 + 32 + 30 + 26 + 34) / 5 = 30 points/sprint. Total remaining scope = 180 + 30 = 210 points. 210 / 30 = 7 sprints."
+      },
+      {
+        id: 129,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.7 • Plan & Manage Quality",
+        q: "Your agile team's automated deployment pipeline runs unit tests on every commit, yet post-release production hotfixes have tripled over the last two quarters due to subtle database concurrency bugs that only appear under realistic load. During the retrospective, the team debates how to fix this. What is the most effective quality improvement?",
+        opts: [
+          "Assign two developers to manually click through the staging environment before every release.",
+          "Update the Definition of Done (DoD) to require automated load and concurrency integration tests in a production-like staging environment prior to story acceptance.",
+          "Extend the warranty support window after each release.",
+          "Track production bugs in a separate Jira board for a dedicated bug-fixing team."
+        ],
+        a: 1,
+        m: "Task 2.7 (Quality Built into DoD): In agile/hybrid delivery, updating the Definition of Done with automated performance/concurrency checks prevents defects from escaping into production."
+      },
+      {
+        id: 130,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.8 • Plan & Manage Scope",
+        q: "During decomposition of the Work Breakdown Structure (WBS) for a predictive smart-grid deployment, two engineering leads disagree on how finely to break down a substation telemetry work package. One wants 2-hour micro-tasks tracked in the WBS, while the other wants a single 400-hour block spanning three months. How should you guide them?",
+        opts: [
+          "Use 2-hour micro-tasks in the WBS so daily earned value can be tracked precisely.",
+          "Apply the 100% rule and the 8/80 heuristic—decomposing work packages down to a controllable level (roughly 8 to 80 hours) where cost and schedule can be reliably estimated and assigned to a single owner, leaving granular tasks for the activity list.",
+          "Leave it as a 400-hour block and manage subtasks informally in emails.",
+          "Decompose the WBS by functional department rather than deliverables."
+        ],
+        a: 1,
+        m: "Task 2.8 (WBS Decomposition Standards): The WBS is deliverable-oriented (100% rule) and broken down to manageable work packages (typically 8–80 hours); granular execution tasks belong in the schedule activity list."
+      },
+      {
+        id: 131,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.8 • Agile Backlog Prioritization",
+        q: "A Product Owner presents a backlog of 50 user stories for a new supply-chain portal. Several stories are high-risk technical integrations with external customs APIs, while others are low-risk UI enhancements requested by marketing. How should you coach the Product Owner to order the backlog for early iterations?",
+        opts: [
+          "Prioritize the easy UI enhancements first to build team momentum and show quick visual progress.",
+          "Prioritize high-value, high-risk stories early ('risk-adjusted backlog') to validate technical feasibility, reduce uncertainty early, and deliver maximum business value.",
+          "Order stories strictly alphabetically by module name.",
+          "Let the development team pick whichever stories they prefer to code first."
+        ],
+        a: 1,
+        m: "Task 2.8 (Risk-Adjusted Value Prioritization): PMI agile best practice pairs high business value with high technical risk early so architectural assumptions are validated before major capital is sunk."
+      },
+      {
+        id: 132,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.9 • Integrate Project Planning",
+        q: "You are consolidating subsidiary plans (scope, schedule, cost, quality, risk, and procurement) into the integrated Project Management Plan for a complex municipal transit upgrade. During your cross-check, you notice the Procurement Management Plan schedules specialized signaling equipment delivery two weeks after the Schedule Baseline shows signal integration testing starting, and the Risk Register lacks any mitigation for supplier shipping delays. What should you do FIRST?",
+        opts: [
+          "Submit a formal change request to the Change Control Board to delay signal integration testing.",
+          "Facilitate an integration alignment session with the scheduling, procurement, and technical leads to reconcile the timeline discrepancy and update the Risk Register before baselining the Project Management Plan.",
+          "Baseline the Project Management Plan as-is and resolve the timing gap during execution.",
+          "Instruct the procurement team to expedite shipping using management reserves."
+        ],
+        a: 1,
+        m: "Task 2.9 (Integration Before Baselining): Because the plan is not yet baselined, you do NOT need a CCB change request. Reconcile cross-plan dependencies and risks collaboratively before locking baselines."
+      },
+      {
+        id: 133,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.10 • Manage Project Changes",
+        q: "During execution of a predictive pharmaceutical manufacturing project, a validation engineer discovers that an approved temperature sensor specification does not meet a newly updated FDA calibration tolerance. She submits a formal change request. You have already logged the request in the change log and completed an impact analysis showing it adds $12,000 and 4 days to a non-critical path. What should you do NEXT?",
+        opts: [
+          "Approve the change request yourself since the schedule impact is on a non-critical path.",
+          "Submit the change request and impact analysis to the Change Control Board (CCB) for formal review and decision per the Change Management Plan.",
+          "Instruct the vendor to ship the updated sensors immediately so testing isn't delayed.",
+          "Re-baseline the cost and schedule baselines immediately."
+        ],
+        a: 1,
+        m: "Task 2.10 (Change Control Sequence): Log -> Assess Impact -> Submit to CCB for Decision -> If Approved, Update Baselines & Communicate -> Execute. Unless the Change Management Plan explicitly delegates authority to the PM, baseline-impacting changes go to the CCB."
+      },
+      {
+        id: 134,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.10 • Agile vs. Predictive Change",
+        q: "Your organization runs a hybrid program where hardware firmware is developed predictively under strict baseline controls, while the companion mobile app is developed in two-week Scrum sprints. A key customer requests adding a biometric login feature to the mobile app and modifying a hardware Bluetooth pairing timeout. How should you handle these two requests?",
+        opts: [
+          "Route both requests through the predictive Change Control Board (CCB) to maintain uniform governance.",
+          "Add both requests directly to the current mobile sprint backlog.",
+          "Route the mobile app feature to the Product Owner for Product Backlog prioritization, while submitting the hardware firmware modification through formal integrated change control.",
+          "Reject both requests until Phase 2."
+        ],
+        a: 2,
+        m: "Task 2.10 (Dual-Track Hybrid Governance): Match the change mechanism to each component's lifecycle—Product Backlog reprioritization for the agile stream, formal CCB change control for the baselined predictive stream."
+      },
+      {
+        id: 135,
+        mode: "HARD",
+        domain: "PROCESS",
+        tag: "Task 2.3 & 2.10 • Secondary Risk Trap",
+        q: "To mitigate a critical-path risk of a single-source database vendor going bankrupt, your team implements an approved risk response to migrate to an open-source database engine. Two weeks after starting the migration, the team realizes the open-source engine lacks built-in encryption-at-rest, creating a new security compliance exposure. What is this new exposure called, and what should you do FIRST?",
+        opts: [
+          "Residual risk; accept it since the primary vendor risk was eliminated.",
+          "Secondary risk; log it in the risk register, analyze its probability and impact, and plan a risk response (such as application-level encryption).",
+          "Workaround; spend management reserves immediately.",
+          "Scope creep; submit a change request to revert to the original vendor."
+        ],
+        a: 1,
+        m: "Task 2.3 (Secondary vs. Residual Risk): A Secondary Risk arises directly as a result of implementing a risk response (Residual Risk is what remains after a response). Log, analyze, and plan a response for the secondary risk."
+      },
+
+      // ==================== DEEP-DIVE BUSINESS ENVIRONMENT 3.1 - 3.8 (136 - 145) ====================
+      {
+        id: 136,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Plan & Manage Compliance",
+        q: "You are managing an international e-commerce checkout redesign. Midway through execution, the European Union updates its digital payment authentication directive, requiring multi-factor biometric verification for transactions over €30 starting in four months—two months after your scheduled launch. A senior product manager argues that since the law takes effect after launch, the team should ship on schedule and address compliance in a maintenance release. What should you do?",
+        opts: [
+          "Agree to ship on schedule and log a post-launch operational handoff item for the maintenance team.",
+          "Assess the exact compliance gap, cost, and schedule impact with legal and technical leads, and update the project plan/backlog to ensure compliant delivery before the regulatory deadline.",
+          "Halt the entire project immediately until EU regulators publish technical implementation examples.",
+          "Ask the sponsor to sign a risk-acceptance form waiving EU regulatory compliance."
+        ],
+        a: 1,
+        m: "Task 3.1 (Proactive Compliance Integration): Regulatory deadlines are hard external constraints. Quantify the compliance impact immediately and build remediation into the project plan rather than deferring legal risk."
+      },
+      {
+        id: 137,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Compliance Categorization & Audit",
+        q: "During planning for a clinical trial data platform, your team identifies four regulatory and internal standards: HIPAA patient privacy rules, FDA electronic signature validation, corporate branding color guidelines, and ISO 27001 security controls. Halfway through execution, budget cuts force you to streamline verification activities. Which item has the lowest compliance criticality and allows internal tailoring?",
+        opts: [
+          "HIPAA patient privacy rules.",
+          "Corporate branding color guidelines, because internal aesthetic standards can be tailored with sponsor approval whereas statutory/regulatory laws (HIPAA, FDA) are mandatory.",
+          "FDA electronic signature validation.",
+          "ISO 27001 security controls required by customer contracts."
+        ],
+        a: 1,
+        m: "Task 3.1 (Compliance Hierarchy): Distinguish between mandatory statutory/regulatory laws (non-negotiable) and internal organizational guidelines (tailorable with governance approval)."
+      },
+      {
+        id: 138,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Evaluate & Deliver Project Benefits",
+        q: "Your organization launched a predictive maintenance analytics tool for its delivery fleet on time and under budget. Six months after project closure, the VP of Fleet Operations reports that unscheduled vehicle breakdowns have only dropped by 4% instead of the projected 25% outlined in the Business Case. Investigation reveals that dispatchers rarely check the analytics dashboard because it isn't integrated into their daily routing screen. Who is accountable for tracking and driving ongoing benefit realization post-closure, and what should have been included in the Benefits Management Plan?",
+        opts: [
+          "The Project Manager is accountable post-closure; additional software licenses should have been budgeted.",
+          "The designated Business/Benefit Owner is accountable post-closure; the Benefits Management Plan should have defined operational adoption metrics, workflow integration, and sustainment checkpoints.",
+          "The Scrum Master is accountable; more story points should have been allocated to testing.",
+          "The PMO Director is accountable; a longer warranty contract should have been signed."
+        ],
+        a: 1,
+        m: "Task 3.2 (Benefits Realization & Ownership): The PM delivers the capability, while the designated Benefit Owner owns post-project value realization supported by adoption metrics in the Benefits Management Plan."
+      },
+      {
+        id: 139,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Incremental Value vs. Sunk Cost",
+        q: "Nine months into a 15-month custom HR recruitment platform build, a commercial SaaS vendor releases an off-the-shelf tool that delivers 90% of your planned functionality at one-fourth the remaining development cost. Your team has already spent $650,000 of its $1,000,000 budget. What should you recommend to the executive sponsor and governance board?",
+        opts: [
+          "Continue building the custom platform so the $650,000 already spent is not wasted.",
+          "Conduct a comparative Business Case and Benefits Management evaluation—treating the $650,000 as a sunk cost—and present options to pivot, integrate the SaaS solution, or terminate the custom build to maximize net organizational value.",
+          "Accelerate custom development to beat the SaaS vendor's market adoption.",
+          "Keep building the custom tool while secretly piloting the SaaS tool."
+        ],
+        a: 1,
+        m: "Task 3.2 (Sunk Cost Fallacy & Value Stewardship): Never throw good money after bad to justify sunk costs. Re-evaluate net remaining ROI/NPV with governance whenever a superior external alternative emerges."
+      },
+      {
+        id: 140,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.3 • Evaluate External Business Env Changes",
+        q: "You are managing a construction and solar microgrid project for a regional manufacturing campus. Midway through procurement, the federal government passes an unexpected clean-energy tax credit expansion that reimburses 40% of battery storage equipment if installed before December 31, while new import tariffs raise solar panel costs by 15%. What should you do FIRST?",
+        opts: [
+          "Immediately order extra battery storage units before the tax credit expires.",
+          "Analyze the combined financial, schedule, and scope impacts of both external policy changes with the sponsor, finance, and technical leads, and update the Business Case and backlog/plan priorities.",
+          "Submit a change request to cancel the solar panel order.",
+          "Log both legislative changes in the lessons learned register for future projects."
+        ],
+        a: 1,
+        m: "Task 3.3 (Scanning External Shifts): External regulatory/economic shifts create both threats (tariffs) and opportunities (tax credits). Quantify both impacts and re-align scope/schedule priorities with the sponsor."
+      },
+      {
+        id: 141,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.3 • PESTLE / Market Disruption",
+        q: "Your agile team is building a B2B travel-booking portal. Three sprints before release, a major airline alliance announces it is retiring its traditional GDS booking feed in favor of a new direct NDC protocol within six months. Competitors are already announcing NDC support. How should you respond?",
+        opts: [
+          "Ignore the announcement because GDS was specified in the original Project Charter.",
+          "Assess the technical effort and business value impact with the Product Owner and architects, and reprioritize the Product Backlog to incorporate NDC support so the product remains competitive at launch.",
+          "Pause the project for six months until all airlines finish migrating to NDC.",
+          "Release the GDS-only portal without telling stakeholders about the airline alliance announcement."
+        ],
+        a: 1,
+        m: "Task 3.3 (Continuous Environment Scanning): Agile backlogs exist specifically to adapt to external market and technology shifts so you don't deliver an obsolete product."
+      },
+      {
+        id: 142,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.4 • Support Organizational Change",
+        q: "Your project is introducing an automated AI-assisted claims-processing system across a 300-person insurance underwriting division. Although accuracy in testing is 98%, anonymous pulse surveys reveal that senior underwriters fear the AI tool is designed to eliminate their roles, causing them to withhold edge-case feedback during user testing. What is the best action to support organizational change?",
+        opts: [
+          "Have HR send an email stating that no layoffs are planned this quarter and mandate UAT participation.",
+          "Partner with executive leadership and HR to communicate a clear, transparent vision of how the AI augments underwriter roles, involve senior underwriters directly in shaping edge-case rules, and establish peer change champions.",
+          "Exclude senior underwriters from UAT and test solely with junior analysts.",
+          "Delay deployment until senior underwriters retire or transfer."
+        ],
+        a: 1,
+        m: "Task 3.4 (Cultural & Psychological Readiness): Resistance often stems from fear of job loss or loss of autonomy. Co-creating the solution with respected senior practitioners and transparent leadership messaging converts skeptics into champions."
+      },
+      {
+        id: 143,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.4 • Organizational Culture & Governance",
+        q: "You are hired to lead a digital transformation project inside a 90-year-old utility company with a deeply hierarchical, risk-averse culture where every minor scope or budget adjustment requires four layers of committee signatures. Your agile team is frustrated because waiting three weeks for committee approval on minor UI backlog changes stalls their two-week sprints. What should you do?",
+        opts: [
+          "Tell the agile team to bypass the committees since agile values responding to change over following a plan.",
+          "Work with the sponsor and governance committees to establish pre-approved tolerance guardrails (e.g., empowering the Product Owner to reprioritize stories within fixed sprint/budget boundaries) while preserving formal sign-off for major baseline shifts.",
+          "Abandon agile practices and revert to a traditional 18-month waterfall lifecycle.",
+          "Submit every single user story to the four committees six months in advance."
+        ],
+        a: 1,
+        m: "Task 3.4 (Bridging Culture & Methodology): Respect organizational governance while negotiating structural guardrails (delegated authority within tolerances) so agile delivery can function inside a traditional enterprise."
+      },
+      {
+        id: 144,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.5 & 3.6 • Portfolio Alignment & Governance",
+        q: "Midway through the fiscal year, your company acquires a rival firm that already owns a mature, regulatory-compliant customer loyalty platform—nearly identical to the custom loyalty platform your project team is 60% finished building. Your project is currently on schedule and under budget. What should you do FIRST?",
+        opts: [
+          "Continue executing your project because your team is on schedule and under budget.",
+          "Alert the project sponsor and portfolio governance board to evaluate strategic redundancy, compare total cost of ownership vs. integrating the acquired platform, and determine whether to pivot or formally close the project.",
+          "Instruct your team to begin integrating the acquired company's database immediately.",
+          "Stop all work immediately and release your team members to other projects."
+        ],
+        a: 1,
+        m: "Task 3.5 / 3.6 (Strategic Portfolio Alignment): Mergers and acquisitions change enterprise strategy overnight. Never keep building redundant capability just because metrics are green—escalate to governance to reassess strategic fit."
+      },
+      {
+        id: 145,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.7 & 3.8 • Continuous Improvement & Closure",
+        q: "During the final retrospective and lessons-learned workshop of a major healthcare cloud migration, the team identifies that unclear third-party vendor security onboarding added four weeks of unplanned delay across multiple workstreams. Simply archiving this note in a static SharePoint folder rarely prevents repeat issues on future projects. What is the best way to drive organizational continuous improvement?",
+        opts: [
+          "Send a strongly worded email to the vendor's account executive.",
+          "Update the organizational Lessons Learned Repository AND recommend concrete updates to the PMO's standard Procurement Onboarding Checklist, Vendor Selection Criteria, and Risk Register templates.",
+          "Add a four-week schedule buffer to your personal project templates.",
+          "Hold a celebratory team lunch and close the project."
+        ],
+        a: 1,
+        m: "Task 3.7 / 3.8 (Organizational Process Assets & Continuous Improvement): True organizational learning goes beyond passive archival—embed lessons directly into standard PMO templates, checklists, and governance gates."
+      },// ==================== ADDITIONAL HARD MODE BUSINESS ENV (146 - 160) ====================
+      {
+        id: 146,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Regulatory Audit Readiness",
+        q: "Six weeks before launching a cloud-based wealth management portal, an external cybersecurity assessor warns that your third-party KYC (Know Your Customer) identity-verification vendor stores biometric selfies in a data center region that lacks approved regulatory reciprocity under updated financial privacy rules. Replacing the vendor will delay go-live by four weeks, while the marketing team has already booked a national launch campaign. What should you do?",
+        opts: [
+          "Launch on schedule to protect the marketing campaign and transition to a compliant KYC vendor in a fast-follow release.",
+          "Escalate the regulatory noncompliance impact to the sponsor and governance board, halt go-live for the non-compliant workflow, and work with legal, security, and procurement to remediate data residency prior to launch.",
+          "Ask the KYC vendor to sign an indemnification letter transferring legal liability if regulators audit the system.",
+          "Disable biometric selfie checks temporarily at launch and rely solely on email verification."
+        ],
+        a: 1,
+        m: "Task 3.1 (Non-Negotiable Compliance): Indemnification letters or marketing schedules never excuse shipping a system in violation of statutory data residency laws. Assess, escalate, and remediate before launch."
+      },
+      {
+        id: 147,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Benefits Realization Metrics",
+        q: "Your organization recently completed a multi-million-dollar automated warehouse picking system. During the 90-day post-implementation review, the Finance Director notes that order fulfillment speed improved by 35%, yet overall warehouse operating cost actually increased by 8% due to unplanned specialized maintenance contracts and electricity spikes—missing the net cost-reduction target in the Business Case. What should have been established during project planning to prevent this blind spot?",
+        opts: [
+          "A stricter Earned Value Management (EVM) cost baseline during construction.",
+          "Comprehensive lifecycle benefit and total-cost-of-ownership (TCO) metrics in the Benefits Management Plan, including ongoing operational overhead thresholds and joint review checkpoints with the Benefit Owner.",
+          "A Firm Fixed Price contract with the robotics vendor.",
+          "More frequent sprint demos during software configuration."
+        ],
+        a: 1,
+        m: "Task 3.2 (Net Benefit Governance): True benefit realization measures net business value (benefits minus ongoing operational run costs), tracked systematically via the Benefits Management Plan."
+      },
+      {
+        id: 148,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.3 • External Supply Chain & Geopolitics",
+        q: "You are managing a predictive hospital diagnostic equipment installation across six regional clinics. Midway through manufacturing, an export embargo halts shipments of a specialized semiconductor component used in the imaging consoles, pushing vendor delivery out by five months. A domestic supplier offers a functionally equivalent component that meets medical safety standards, but requires re-certifying the console's electrical interface and adds $95,000 in engineering costs. What should you do FIRST?",
+        opts: [
+          "Accept the five-month vendor delay and update the schedule baseline immediately.",
+          "Conduct a formal impact analysis comparing the cost, schedule, quality, and compliance trade-offs of both options with technical and regulatory leads, then present the analysis to the sponsor and Change Control Board.",
+          "Instruct procurement to purchase the domestic component immediately to protect the clinical launch date.",
+          "Cancel the remaining clinic installations and close the project."
+        ],
+        a: 1,
+        m: "Task 3.3 (Evaluate External Shifts): When external geopolitical or supply-chain disruptions hit, quantify all viable alternatives (cost, schedule, regulatory re-certification) before presenting to governance/CCB."
+      },
+      {
+        id: 149,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.4 • Organizational Change & Middle Management",
+        q: "During an enterprise-wide transition from legacy desktop software to a cloud collaboration suite across 2,500 employees, executive leadership is fully supportive and end-user training attendance is 92%. However, two weeks post-cutover, usage telemetry shows three major operations divisions have reverted to emailing spreadsheets back and forth. Interviews reveal that mid-level department managers refuse to adjust their weekly reporting workflows because they feel excluded from how the new tool was configured. What is the best action?",
+        opts: [
+          "Ask the CIO to disable email attachments across the enterprise to force cloud adoption.",
+          "Engage the mid-level department managers in targeted co-design and workflow-tailoring workshops, address their reporting pain points, and empower them as divisional change leaders.",
+          "Schedule mandatory refresher training for all 2,500 end users.",
+          "Close the project since technical deployment and end-user training met contractual milestones."
+        ],
+        a: 1,
+        m: "Task 3.4 (Middle-Management Resistance): Organizational change fails when middle managers feel bypassed. Co-opt them into tailoring workflows so they actively champion adoption within their teams."
+      },
+      {
+        id: 150,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Ethics & Anti-Corruption Compliance",
+        q: "You are leading a municipal smart-water meter deployment in an international market. A local subcontractor informs you that obtaining final municipal street-excavation permits normally takes eight weeks, but offering an 'expediting facilitation fee' directly to a junior municipal clerk will secure approval in 48 hours. Your project is currently two weeks behind schedule. How must you respond?",
+        opts: [
+          "Authorize the facilitation fee out of contingency reserves since it is a standard local business custom.",
+          "Refuse to authorize any improper payment, adhere strictly to anti-bribery/anti-corruption laws and the PMI Code of Ethics, document the legitimate eight-week permitting lead time, and explore legal schedule recovery options.",
+          "Ask the subcontractor to pay the fee out of their own margin and bill it back as miscellaneous consulting.",
+          "Begin street excavation immediately while waiting for the eight-week permit."
+        ],
+        a: 1,
+        m: "Task 3.1 (Legal & Ethical Compliance): Facilitation payments/bribes violate anti-corruption statutes (such as the FCPA) and PMI ethical standards—always refuse regardless of local custom or schedule pressure."
+      },
+      {
+        id: 151,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Phased Value & Early Benefits",
+        q: "Your team is building a 12-module enterprise resource planning (ERP) system for a retail chain. Financial analysis in the Business Case shows that just two modules—automated inventory replenishment and supplier EDI invoicing—account for 75% of the project's projected annual savings. However, the original predictive plan schedules all 12 modules for a single 'big-bang' rollout in Month 14. Midway through Month 4, retail margins tighten across the industry, and the CFO threatens to freeze capital projects. What should you propose?",
+        opts: [
+          "Cut the remaining 10 modules permanently and close the project after Month 6.",
+          "Propose restructuring delivery into phased incremental releases so the inventory and EDI modules deploy in Month 7 to capture immediate cash-flow savings that self-fund subsequent releases.",
+          "Continue with the Month 14 big-bang schedule while cutting quality testing to save money.",
+          "Ask the CFO to exempt your project from the capital freeze without changing the delivery plan."
+        ],
+        a: 1,
+        m: "Task 3.2 (Incremental Value Delivery): Restructuring a monolithic rollout to release high-ROI increments early protects the project during budget tightening and proves tangible business value fast."
+      },
+      {
+        id: 152,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.3 • Competitive & Technological Shift",
+        q: "Halfway through developing a consumer personal-finance mobile app, two major smartphone operating system vendors announce native built-in expense-tracking features launching next quarter that directly replicate your app's core differentiating feature. Your team has 40% of the budget remaining. What should you do FIRST?",
+        opts: [
+          "Instruct the development team to accelerate coding so your app launches two weeks before the OS updates.",
+          "Convene the Product Owner, executive sponsor, and market strategists to reassess product viability, evaluate pivot opportunities toward higher-value niche features, and re-baseline the Business Case and backlog.",
+          "Continue building the planned backlog as approved in the Project Charter.",
+          "Cancel the project immediately and disband the team."
+        ],
+        a: 1,
+        m: "Task 3.3 (External Market Disruption): When platform-level shifts commoditize your planned value proposition, immediately re-evaluate strategic differentiation and pivot the Business Case/backlog with leadership."
+      },
+      {
+        id: 153,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.4 • Organizational Readiness & Training",
+        q: "Your project is transitioning a regional bank's mortgage underwriters from manual paper checklists to an automated risk-scoring engine. Technical UAT passed with zero critical defects, and go-live is scheduled for Monday. During Friday's readiness review, you learn that 45% of senior underwriters have not completed the hands-on system simulation training because branch loan volume spiked this month. What should you recommend?",
+        opts: [
+          "Proceed with Monday's cutover as scheduled and provide a searchable PDF user guide for underwriters to reference on live loans.",
+          "Collaborate with banking operations leadership to delay cutover or implement a phased branch-by-branch rollout until underwriters complete hands-on readiness certification.",
+          "Launch on Monday and assign the project's QA testers to process live mortgages temporarily.",
+          "Escalate the underwriters' low training completion to HR for disciplinary review."
+        ],
+        a: 1,
+        m: "Task 3.4 (Operational Readiness Gate): Deploying complex decision tools before end users are trained creates severe operational and compliance risk; align with operations on a phased or adjusted cutover."
+      },
+      {
+        id: 154,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.5 • Portfolio & Resource Reprioritization",
+        q: "You manage a customer-portal enhancement project that is performing on schedule and within budget. Suddenly, a severe data breach at a major industry competitor prompts your Board of Directors to mandate an enterprise-wide Zero-Trust Security Program as the company's #1 strategic priority, requiring your two senior security architects to be reassigned immediately for six weeks. How should you respond?",
+        opts: [
+          "Refuse to release the security architects because your project charter already committed their allocation.",
+          "Collaborate with the PMO, sponsor, and Product Owner to assess the schedule/scope impact of the enterprise priority shift, update your project's risk register and baselines, and sequence non-security work in the interim.",
+          "Hire two unvetted contractors the next day without informing procurement.",
+          "Put the entire project on indefinite hold without consulting the sponsor."
+        ],
+        a: 1,
+        m: "Task 3.5 (Enterprise Strategic Alignment): Individual projects exist to serve broader enterprise strategy. Adapt gracefully to Board-level reprioritization, re-plan around resource shifts, and transparently communicate schedule impacts."
+      },
+      {
+        id: 155,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.6 • Governance Tailoring in Agile",
+        q: "Your organization's PMO traditionally enforces a 14-document waterfall stage-gate checklist before any software can move to production. Your team is delivering an internal HR onboarding tool using two-week Scrum sprints, and spending three days every sprint filling out redundant waterfall templates is cutting velocity in half. What is the best approach?",
+        opts: [
+          "Stop filling out the PMO templates because the Agile Manifesto prioritizes working software over comprehensive documentation.",
+          "Partner with the PMO and compliance stakeholders to tailor the governance framework—mapping automated agile artifacts (such as CI/CD test logs, Definition of Done checklists, and sprint review sign-offs) to satisfy audit controls.",
+          "Hire a dedicated technical writer to manually fill out all 14 waterfall documents every two weeks.",
+          "Switch the project back to a six-month predictive waterfall schedule."
+        ],
+        a: 1,
+        m: "Task 3.6 (Tailoring Organizational Governance): Never ignore PMO governance—collaborate with the PMO to tailor lightweight, automated agile evidence that satisfies enterprise audit requirements."
+      },
+      {
+        id: 156,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Environmental & Sustainability Compliance",
+        q: "During construction of a predictive corporate data center, local environmental regulators pass an updated municipal noise and water-cooling discharge ordinance that takes effect prior to facility commissioning. Your current cooling-tower design exceeds the new daytime decibel limit by 6 dB. What should you do FIRST?",
+        opts: [
+          "Proceed with the current cooling-tower installation and apply for a municipal noise variance after commissioning.",
+          "Engage acoustic engineers, procurement, and legal/compliance leads to evaluate compliant sound-attenuation modifications and assess cost and schedule impacts before submitting a change request.",
+          "Instruct the construction contractor to install acoustic baffles immediately using management reserves.",
+          "Schedule facility testing exclusively at night to avoid daytime decibel inspections."
+        ],
+        a: 1,
+        m: "Task 3.1 (Regulatory Change Impact Analysis): Assess technical remediation options and baseline impacts with compliance and engineering specialists first, then route through formal change control."
+      },
+      {
+        id: 157,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Financial Benefit Metrics (IRR / Payback / BCR)",
+        q: "During annual portfolio review, executive leadership asks you to evaluate two mutually exclusive compliance-automation initiatives: Initiative X has a Benefit-Cost Ratio (BCR) of 1.45 and a Net Present Value (NPV) of $480,000; Initiative Y has a Benefit-Cost Ratio (BCR) of 1.65 and a Net Present Value (NPV) of $290,000 because it is a much smaller project. Assuming capital is available for either project, which should you recommend to maximize total enterprise value?",
+        opts: [
+          "Initiative Y because its higher Benefit-Cost Ratio (1.65) indicates superior capital efficiency.",
+          "Initiative X because its higher positive Net Present Value ($480,000) generates greater absolute net financial value for the organization.",
+          "Neither, because a BCR below 2.0 indicates unacceptable financial risk.",
+          "Run both initiatives simultaneously at 50% scope."
+        ],
+        a: 1,
+        m: "Task 3.2 (NPV vs. BCR): Just like IRR, BCR is a relative ratio that can favor smaller projects. For mutually exclusive choices where funding is available, higher positive NPV always maximizes total dollar wealth."
+      },
+      {
+        id: 158,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.3 • External Currency & Economic Volatility",
+        q: "You are managing a predictive international telecommunications infrastructure rollout where 60% of specialized optical equipment is priced in Euros, while your project budget is baselined in US Dollars. Halfway through procurement, sudden currency fluctuations cause the Euro to appreciate by 14% against the Dollar, threatening to exhaust your cost baseline before final equipment tranches are ordered. What should you do FIRST?",
+        opts: [
+          "Cancel the remaining European equipment orders and source uncertified local alternatives.",
+          "Quantify the exact currency exposure across remaining procurement milestones, review currency-hedging or forward-contract options with corporate finance/procurement, and assess contingency reserve adequacy.",
+          "Ask the sponsor to immediately add 14% to the Project Charter budget.",
+          "Instruct the vendor to absorb the currency exchange loss."
+        ],
+        a: 1,
+        m: "Task 3.3 (External Economic Factors): Quantify macroeconomic/currency exposure with finance and procurement specialists and evaluate financial hedging or reserve options before requesting baseline increases."
+      },
+      {
+        id: 159,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.4 • Cross-Organizational Cultural Integration",
+        q: "Following a corporate acquisition, your project is integrating the acquired company's engineering team into your parent company's hybrid delivery framework. The acquired team is accustomed to flat, informal verbal approvals and rapid daily deployments, whereas your parent company requires documented risk assessments and formal change tickets for production releases. Tension and missed handoffs are escalating. What should you do?",
+        opts: [
+          "Enforce the parent company's full documentation standards on day one and audit the acquired team weekly.",
+          "Facilitate joint cultural-alignment and workflow-mapping workshops to explain the 'why' behind governance controls, co-create streamlined hybrid working agreements, and provide coaching during transition.",
+          "Allow the acquired team to operate permanently outside parent-company governance rules.",
+          "Replace the acquired team's leads with parent-company managers."
+        ],
+        a: 1,
+        m: "Task 3.4 (Post-Merger Cultural Integration): Merging two organizational cultures requires empathy, shared understanding of governance purpose, and co-created transitional working agreements rather than brute-force mandates."
+      },
+      {
+        id: 160,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.7 & 3.8 • Knowledge Transfer & Organizational Learning",
+        q: "Your agile transformation pilot project successfully reduced release lead times by 50% across three product squads. Executive leadership now wants to scale these practices across 25 additional teams in the enterprise. What is the most effective way to transfer this organizational capability sustainably?",
+        opts: [
+          "Publish a 150-page playbook on the corporate intranet and mandate that all 25 teams adopt it next quarter.",
+          "Establish a Communities of Practice (CoP) network, pair experienced pilot champions as embedded coaches for new squads, and iteratively refine organizational templates based on empirical feedback.",
+          "Hire external consultants to run daily standups for all 25 teams permanently.",
+          "Transfer the three pilot teams' Scrum Masters into full-time compliance auditors."
+        ],
+        a: 1,
+        m: "Task 3.7 / 3.8 (Scaling Organizational Capability): Sustainable organizational learning scales through Communities of Practice, peer coaching, and iterative refinement—not top-down static manuals."
+      }
     ];
 
     const STORAGE_KEY = "pmp_hub_100_state";
