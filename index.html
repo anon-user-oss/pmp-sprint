@@ -2359,6 +2359,8 @@
       updateProgressCounts(fullBank.filter(q => q.mode === currentMode));
     }
 
+   let currentCorrectShuffledIdx = 0;
+
     function renderQuestion() {
       const ratBox = document.getElementById("rationale-box");
       const nextBtn = document.getElementById("next-btn");
@@ -2368,15 +2370,16 @@
 
       ratBox.style.display = "none";
       nextBtn.disabled = true;
+      nextBtn.textContent = "Next →";
 
-      if (activeDeck.length === 0) {
-        domLabel.textContent = "CLEAR";
+      if (activeDeck.length === 0 || currentIndex >= activeDeck.length) {
+        domLabel.textContent = "SESSION COMPLETE";
         trapLabel.textContent = "0 Left";
         document.getElementById("question-text").textContent = currentFilter === "MISSED" 
-          ? "Zero missed questions in your queue! Switch back to Unseen or All." 
+          ? "Zero missed questions left in your queue! Switch back to Unseen or All." 
           : currentFilter === "UNSEEN"
-          ? "You have answered every unseen question in this mode! Review Missed or Reset Progress."
-          : "No questions in this filter.";
+          ? "You cleared every unseen question in this filter! Review Missed or switch modes."
+          : "You completed all questions in this deck! Tap Shuffle or switch filters to run another pass.";
         optsContainer.innerHTML = "";
         updateStats();
         return;
@@ -2394,10 +2397,21 @@
       document.getElementById("question-text").textContent = item.q;
       optsContainer.innerHTML = "";
 
-      item.opts.forEach((opt, idx) => {
+      // Shuffle options so button positions (A/B/C/D) cannot be memorized on repeats
+      const indexedOpts = item.opts.map((text, originalIdx) => ({
+        text,
+        isCorrect: originalIdx === item.a
+      }));
+      for (let i = indexedOpts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indexedOpts[i], indexedOpts[j]] = [indexedOpts[j], indexedOpts[i]];
+      }
+      currentCorrectShuffledIdx = indexedOpts.findIndex(o => o.isCorrect);
+
+      indexedOpts.forEach((optObj, idx) => {
         const btn = document.createElement("button");
         btn.className = "option-btn";
-        btn.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
+        btn.textContent = `${String.fromCharCode(65 + idx)}. ${optObj.text}`;
         btn.onclick = () => handleAnswer(idx, btn);
         optsContainer.appendChild(btn);
       });
@@ -2411,14 +2425,14 @@
 
       state.answeredCount++;
 
-      if (selectedIdx === item.a) {
+      if (selectedIdx === currentCorrectShuffledIdx) {
         selectedBtn.classList.add("correct");
         state.score++;
         missedIds.delete(item.id);
         masteredIds.add(item.id);
       } else {
         selectedBtn.classList.add("wrong");
-        allBtns[item.a].classList.add("correct");
+        allBtns[currentCorrectShuffledIdx].classList.add("correct");
         missedIds.add(item.id);
         masteredIds.delete(item.id);
       }
@@ -2430,15 +2444,19 @@
       ratBox.className = isHard ? "rationale hard" : "rationale";
       ratBox.innerHTML = `<strong>${isHard ? "PMI Trap Breakdown:" : "PMI Mindset Rule:"}</strong>${item.m}`;
       ratBox.style.display = "block";
-      document.getElementById("next-btn").disabled = false;
+      
+      const nextBtn = document.getElementById("next-btn");
+      nextBtn.disabled = false;
+      if (currentIndex === activeDeck.length - 1) {
+        nextBtn.textContent = "Finish Deck ✓";
+      }
       updateStats();
     }
 
     function nextQuestion() {
-      currentIndex = (currentIndex + 1) % activeDeck.length;
+      currentIndex++;
       renderQuestion();
     }
-
     function shuffleDeck() {
       for (let i = activeDeck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
