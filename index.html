@@ -92,6 +92,14 @@
     <button class="filter-btn" data-filter="BUSINESS">Business Env</button>
     <button class="filter-btn" data-filter="PEOPLE">People</button>
     <button class="filter-btn" data-filter="MISSED">Missed (0)</button>
+    <!-- Inside <div id="filters">, right after your Missed button -->
+    <button class="filter-btn" data-filter="UNSEEN">Unseen (0)</button>
+    <button class="filter-btn" data-filter="MASTERED">Mastered (0)</button>
+  </div>
+
+  <!-- Right below </div> of #filters -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin: 8px 0 12px; font-size: 0.85rem; opacity: 0.85;">
+    <span id="progress-summary">Mastered: 0 / 0 • Unseen: 0</span>
   </div>
 
   <div class="card">
@@ -2249,15 +2257,18 @@
         m: "Task 3.8 (Social & Market Environment Changes): Adapt product strategy and backlog priorities when empirical external demographic/behavioral shifts alter customer demand."
       }
     ];
+];
 
     const STORAGE_KEY = "pmp_hub_100_state";
     let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
       score: 0,
       answeredCount: 0,
-      missedIds: []
+      missedIds: [],
+      masteredIds: []
     };
 
-    let missedIds = new Set(state.missedIds);
+    let missedIds = new Set(state.missedIds || []);
+    let masteredIds = new Set(state.masteredIds || []);
     let currentMode = "CORE"; // CORE or HARD
     let currentFilter = "ALL";
     let activeDeck = [];
@@ -2267,7 +2278,8 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         score: state.score,
         answeredCount: state.answeredCount,
-        missedIds: Array.from(missedIds)
+        missedIds: Array.from(missedIds),
+        masteredIds: Array.from(masteredIds)
       }));
     }
 
@@ -2282,7 +2294,23 @@
       rebuildDeck();
     }
 
-    function rebuildDeck() {document.getElementById("core-card-title").textContent = `Core Mindset (${fullBank.filter(q => q.mode === "CORE").length})`;
+    function updateProgressCounts(modePool) {
+      const unseenCount = modePool.filter(q => !masteredIds.has(q.id) && !missedIds.has(q.id)).length;
+      const masteredCount = modePool.filter(q => masteredIds.has(q.id)).length;
+
+      const unseenBtn = document.querySelector('[data-filter="UNSEEN"]');
+      const masteredBtn = document.querySelector('[data-filter="MASTERED"]');
+      const summaryEl = document.getElementById("progress-summary");
+
+      if (unseenBtn) unseenBtn.textContent = `Unseen (${unseenCount})`;
+      if (masteredBtn) masteredBtn.textContent = `Mastered (${masteredCount})`;
+      if (summaryEl) {
+        summaryEl.textContent = `${currentMode} Progress: ${masteredCount}/${modePool.length} Mastered • ${unseenCount} Unseen`;
+      }
+    }
+
+    function rebuildDeck() {
+      document.getElementById("core-card-title").textContent = `Core Mindset (${fullBank.filter(q => q.mode === "CORE").length})`;
       document.getElementById("hard-card-title").textContent = `Hard Mode (${fullBank.filter(q => q.mode === "HARD").length})`;
       const modePool = fullBank.filter(q => q.mode === currentMode);
       
@@ -2292,6 +2320,7 @@
       document.querySelector('[data-filter="BUSINESS"]').textContent = `Business Env (${modePool.filter(q => q.domain === "BUSINESS").length})`;
       document.querySelector('[data-filter="PEOPLE"]').textContent = `People (${modePool.filter(q => q.domain === "PEOPLE").length})`;
       document.querySelector('[data-filter="MISSED"]').textContent = `Missed (${missedIds.size})`;
+      updateProgressCounts(modePool);
 
       document.querySelectorAll(".filter-btn").forEach(btn => {
         const isActive = btn.dataset.filter === currentFilter;
@@ -2299,14 +2328,25 @@
         btn.classList.toggle("hard-accent", isActive && currentMode === "HARD");
       });
 
+      let filteredPool = [];
       if (currentFilter === "MISSED") {
-        // Missed pulls across ALL 100 questions so nothing gets left behind
-        activeDeck = fullBank.filter(q => missedIds.has(q.id));
+        filteredPool = fullBank.filter(q => missedIds.has(q.id));
+      } else if (currentFilter === "UNSEEN") {
+        filteredPool = modePool.filter(q => !masteredIds.has(q.id) && !missedIds.has(q.id));
+      } else if (currentFilter === "MASTERED") {
+        filteredPool = modePool.filter(q => masteredIds.has(q.id));
       } else if (currentFilter === "ALL") {
-        activeDeck = [...modePool];
+        filteredPool = [...modePool];
       } else {
-        activeDeck = modePool.filter(q => q.domain === currentFilter);
+        filteredPool = modePool.filter(q => q.domain === currentFilter);
       }
+
+      // Unseen-First Ordering: 0 = Unseen, 1 = Missed, 2 = Mastered
+      const getRank = (id) => (!masteredIds.has(id) && !missedIds.has(id) ? 0 : missedIds.has(id) ? 1 : 2);
+      activeDeck = filteredPool
+        .map(q => ({ q, sortKey: getRank(q.id) + Math.random() * 0.9 }))
+        .sort((a, b) => a.sortKey - b.sortKey)
+        .map(entry => entry.q);
 
       currentIndex = 0;
       renderQuestion();
@@ -2316,6 +2356,7 @@
       const pct = state.answeredCount > 0 ? Math.round((state.score / state.answeredCount) * 100) : 0;
       document.getElementById("stats").textContent = `Score: ${state.score}/${state.answeredCount} (${pct}%) • Q ${activeDeck.length ? currentIndex + 1 : 0}/${activeDeck.length}`;
       document.querySelector('[data-filter="MISSED"]').textContent = `Missed (${missedIds.size})`;
+      updateProgressCounts(fullBank.filter(q => q.mode === currentMode));
     }
 
     function renderQuestion() {
@@ -2332,7 +2373,9 @@
         domLabel.textContent = "CLEAR";
         trapLabel.textContent = "0 Left";
         document.getElementById("question-text").textContent = currentFilter === "MISSED" 
-          ? "Zero missed questions in your queue! Switch back to All or toggle between Core and Hard Mode." 
+          ? "Zero missed questions in your queue! Switch back to Unseen or All." 
+          : currentFilter === "UNSEEN"
+          ? "You have answered every unseen question in this mode! Review Missed or Reset Progress."
           : "No questions in this filter.";
         optsContainer.innerHTML = "";
         updateStats();
@@ -2372,10 +2415,12 @@
         selectedBtn.classList.add("correct");
         state.score++;
         missedIds.delete(item.id);
+        masteredIds.add(item.id);
       } else {
         selectedBtn.classList.add("wrong");
         allBtns[item.a].classList.add("correct");
         missedIds.add(item.id);
+        masteredIds.delete(item.id);
       }
 
       saveState();
@@ -2404,9 +2449,10 @@
     }
 
     function resetProgress() {
-      if (!confirm("Reset your saved score and missed queue across all 100 questions?")) return;
-      state = { score: 0, answeredCount: 0, missedIds: [] };
+      if (!confirm("Reset your saved score, mastered, and missed queue across all questions?")) return;
+      state = { score: 0, answeredCount: 0, missedIds: [], masteredIds: [] };
       missedIds.clear();
+      masteredIds.clear();
       saveState();
       rebuildDeck();
     }
