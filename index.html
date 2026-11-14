@@ -65,6 +65,11 @@
     .btn-primary { background: var(--accent); color: #0b1120; flex: 1.4; }
     .btn-primary.hard { background: var(--hard); }
     .btn-primary:disabled { opacity: 0.35; }
+    .timer-pill { background: rgba(56, 189, 248, 0.14); color: var(--accent); padding: 2px 8px; border-radius: 4px; font-variant-numeric: tabular-nums; }
+    .timer-pill.warn { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+    .timer-pill.over { background: rgba(239, 68, 68, 0.22); color: #fca5a5; }
+    .flag-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; cursor: pointer; }
+    .flag-btn.flagged { background: rgba(245, 158, 11, 0.2); border-color: var(--hard); color: #fcd34d; }
   </style>
 </head>
 <body>
@@ -95,6 +100,7 @@
     <!-- Inside <div id="filters">, right after your Missed button -->
     <button class="filter-btn" data-filter="UNSEEN">Unseen (0)</button>
     <button class="filter-btn" data-filter="MASTERED">Mastered (0)</button>
+    <button class="filter-btn" data-filter="FLAGGED">★ Flagged (0)</button>
   </div>
 
   <!-- Right below </div> of #filters -->
@@ -104,8 +110,14 @@
 
   <div class="card">
     <div class="tag-row">
-      <span class="domain-tag" id="domain-label">PROCESS</span>
-      <span class="trap-tag" id="trap-label">Task</span>
+   <span class="domain-tag" id="domain-label">PROCESS</span>
+   <div style="display:flex; align-items:center; gap:6px; margin-left:auto;">
+     <span class="timer-pill" id="timer-label">01:15</span>
+     <button class="flag-btn" id="flag-btn" onclick="toggleFlag()">☆ Flag</button>
+   </div>
+ </div>
+ <div style="margin-bottom:10px;"><span class="trap-tag" id="trap-label">Task</span></div>
+      
     </div>
     <div class="question-text" id="question-text">Loading...</div>
     <div class="options" id="options-container"></div>
@@ -2263,23 +2275,70 @@
       score: 0,
       answeredCount: 0,
       missedIds: [],
-      masteredIds: []
+      masteredIds: [],
+      flaggedIds: []
     };
 
     let missedIds = new Set(state.missedIds || []);
     let masteredIds = new Set(state.masteredIds || []);
-    let currentMode = "CORE"; // CORE or HARD
+    let flaggedIds = new Set(state.flaggedIds || []);
+    let currentMode = "CORE";
     let currentFilter = "ALL";
     let activeDeck = [];
     let currentIndex = 0;
+    let currentCorrectShuffledIdx = 0;
+    let timerInterval = null;
+    let secondsRemaining = 75;
 
     function saveState() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         score: state.score,
         answeredCount: state.answeredCount,
         missedIds: Array.from(missedIds),
-        masteredIds: Array.from(masteredIds)
+        masteredIds: Array.from(masteredIds),
+        flaggedIds: Array.from(flaggedIds)
       }));
+    }
+
+    function startQuestionTimer() {
+      clearInterval(timerInterval);
+      secondsRemaining = 75;
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        secondsRemaining--;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const el = document.getElementById("timer-label");
+      if (!el) return;
+      const absSec = Math.abs(secondsRemaining);
+      const mins = String(Math.floor(absSec / 60)).padStart(2, "0");
+      const secs = String(absSec % 60).padStart(2, "0");
+      el.textContent = secondsRemaining < 0 ? `-${mins}:${secs}` : `${mins}:${secs}`;
+      el.className = secondsRemaining <= 0 ? "timer-pill over" : secondsRemaining <= 20 ? "timer-pill warn" : "timer-pill";
+    }
+
+    function toggleFlag() {
+      if (!activeDeck.length || currentIndex >= activeDeck.length) return;
+      const qId = activeDeck[currentIndex].id;
+      if (flaggedIds.has(qId)) {
+        flaggedIds.delete(qId);
+      } else {
+        flaggedIds.add(qId);
+      }
+      saveState();
+      updateFlagButton(qId);
+      document.querySelector('[data-filter="FLAGGED"]').textContent = `★ Flagged (${flaggedIds.size})`;
+    }
+
+    function updateFlagButton(qId) {
+      const btn = document.getElementById("flag-btn");
+      if (!btn) return;
+      const isFlagged = flaggedIds.has(qId);
+      btn.textContent = isFlagged ? "★ Flagged" : "☆ Flag";
+      btn.className = isFlagged ? "flag-btn flagged" : "flag-btn";
     }
 
     function switchMode(mode) {
@@ -2297,12 +2356,11 @@
       const unseenCount = modePool.filter(q => !masteredIds.has(q.id) && !missedIds.has(q.id)).length;
       const masteredCount = modePool.filter(q => masteredIds.has(q.id)).length;
 
-      const unseenBtn = document.querySelector('[data-filter="UNSEEN"]');
-      const masteredBtn = document.querySelector('[data-filter="MASTERED"]');
+      document.querySelector('[data-filter="UNSEEN"]').textContent = `Unseen (${unseenCount})`;
+      document.querySelector('[data-filter="MASTERED"]').textContent = `Mastered (${masteredCount})`;
+      document.querySelector('[data-filter="FLAGGED"]').textContent = `★ Flagged (${flaggedIds.size})`;
+      
       const summaryEl = document.getElementById("progress-summary");
-
-      if (unseenBtn) unseenBtn.textContent = `Unseen (${unseenCount})`;
-      if (masteredBtn) masteredBtn.textContent = `Mastered (${masteredCount})`;
       if (summaryEl) {
         summaryEl.textContent = `${currentMode} Progress: ${masteredCount}/${modePool.length} Mastered • ${unseenCount} Unseen`;
       }
@@ -2313,7 +2371,6 @@
       document.getElementById("hard-card-title").textContent = `Hard Mode (${fullBank.filter(q => q.mode === "HARD").length})`;
       const modePool = fullBank.filter(q => q.mode === currentMode);
       
-      // Update filter button counts dynamically for active mode
       document.querySelector('[data-filter="ALL"]').textContent = `All (${modePool.length})`;
       document.querySelector('[data-filter="PROCESS"]').textContent = `Process (${modePool.filter(q => q.domain === "PROCESS").length})`;
       document.querySelector('[data-filter="BUSINESS"]').textContent = `Business Env (${modePool.filter(q => q.domain === "BUSINESS").length})`;
@@ -2330,6 +2387,8 @@
       let filteredPool = [];
       if (currentFilter === "MISSED") {
         filteredPool = fullBank.filter(q => missedIds.has(q.id));
+      } else if (currentFilter === "FLAGGED") {
+        filteredPool = fullBank.filter(q => flaggedIds.has(q.id));
       } else if (currentFilter === "UNSEEN") {
         filteredPool = modePool.filter(q => !masteredIds.has(q.id) && !missedIds.has(q.id));
       } else if (currentFilter === "MASTERED") {
@@ -2340,7 +2399,6 @@
         filteredPool = modePool.filter(q => q.domain === currentFilter);
       }
 
-      // Unseen-First Ordering: 0 = Unseen, 1 = Missed, 2 = Mastered
       const getRank = (id) => (!masteredIds.has(id) && !missedIds.has(id) ? 0 : missedIds.has(id) ? 1 : 2);
       activeDeck = filteredPool
         .map(q => ({ q, sortKey: getRank(q.id) + Math.random() * 0.9 }))
@@ -2358,8 +2416,6 @@
       updateProgressCounts(fullBank.filter(q => q.mode === currentMode));
     }
 
-   let currentCorrectShuffledIdx = 0;
-
     function renderQuestion() {
       const ratBox = document.getElementById("rationale-box");
       const nextBtn = document.getElementById("next-btn");
@@ -2372,10 +2428,13 @@
       nextBtn.textContent = "Next →";
 
       if (activeDeck.length === 0 || currentIndex >= activeDeck.length) {
+        clearInterval(timerInterval);
         domLabel.textContent = "SESSION COMPLETE";
         trapLabel.textContent = "0 Left";
         document.getElementById("question-text").textContent = currentFilter === "MISSED" 
           ? "Zero missed questions left in your queue! Switch back to Unseen or All." 
+          : currentFilter === "FLAGGED"
+          ? "No flagged questions in your queue. Tap ☆ Flag on any tricky scenario to save it here."
           : currentFilter === "UNSEEN"
           ? "You cleared every unseen question in this filter! Review Missed or switch modes."
           : "You completed all questions in this deck! Tap Shuffle or switch filters to run another pass.";
@@ -2392,11 +2451,12 @@
 
       trapLabel.textContent = item.tag;
       trapLabel.className = isHard ? "trap-tag hard" : "trap-tag";
+      updateFlagButton(item.id);
+      startQuestionTimer();
 
       document.getElementById("question-text").textContent = item.q;
       optsContainer.innerHTML = "";
 
-      // Shuffle options so button positions (A/B/C/D) cannot be memorized on repeats
       const indexedOpts = item.opts.map((text, originalIdx) => ({
         text,
         isCorrect: originalIdx === item.a
@@ -2418,6 +2478,7 @@
     }
 
     function handleAnswer(selectedIdx, selectedBtn) {
+      clearInterval(timerInterval);
       const item = activeDeck[currentIndex];
       const allBtns = document.querySelectorAll(".option-btn");
       allBtns.forEach(b => b.onclick = null);
@@ -2456,6 +2517,7 @@
       currentIndex++;
       renderQuestion();
     }
+
     function shuffleDeck() {
       for (let i = activeDeck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -2466,10 +2528,11 @@
     }
 
     function resetProgress() {
-      if (!confirm("Reset your saved score, mastered, and missed queue across all questions?")) return;
-      state = { score: 0, answeredCount: 0, missedIds: [], masteredIds: [] };
+      if (!confirm("Reset your saved score, mastered, missed, and flagged history across all questions?")) return;
+      state = { score: 0, answeredCount: 0, missedIds: [], masteredIds: [], flaggedIds: [] };
       missedIds.clear();
       masteredIds.clear();
+      flaggedIds.clear();
       saveState();
       rebuildDeck();
     }
