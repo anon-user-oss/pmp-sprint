@@ -1718,6 +1718,535 @@
         ],
         a: 1,
         m: "Task 2.10 (Manage Project Closure): Project closure requires completing agreed operational transition readiness—deliverables aren't truly closed until operations is enabled and transition criteria are satisfied."
+      }, // ==================== MEDIUM / CORE BUSINESS ENV 3.1 GOVERNANCE (201 - 205) ====================
+      {
+        id: 201,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Governance & OPAs",
+        q: "You are initiating a new enterprise cloud migration project in a mature organization with an established PMO. Before drafting brand-new reporting templates, change-control procedures, and escalation workflows from scratch, what should you do FIRST?",
+        opts: [
+          "Ask the agile team to invent lightweight templates during Sprint 1.",
+          "Review existing Organizational Process Assets (OPAs)—such as standard governance frameworks, reporting policies, and escalation templates—and tailor them to the project.",
+          "Ask the project sponsor to write custom governance policies.",
+          "Copy templates from a previous employer to save planning time."
+        ],
+        a: 1,
+        m: "Task 3.1 (Use of OPAs): PMI expects project managers to leverage and tailor existing Organizational Process Assets (policies, procedures, templates) rather than reinventing governance structures."
+      },
+      {
+        id: 202,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Escalation Paths & Thresholds",
+        q: "During project planning, you are defining the governance framework for a $1.5M predictive infrastructure upgrade. To prevent unnecessary delays while maintaining executive oversight, what should you establish with the sponsor and steering committee upfront?",
+        opts: [
+          "A rule requiring the steering committee to approve every schedule or budget variance regardless of size.",
+          "Clear decision-making authority, tolerance thresholds (e.g., ±5% cost/schedule variance), and formal escalation paths specifying when issues must be elevated.",
+          "An informal understanding that the project manager will handle all issues without escalating.",
+          "A policy routing all technical decisions directly to the CEO."
+        ],
+        a: 1,
+        m: "Task 3.1 (Escalation Paths & Thresholds): Effective governance defines clear tolerance thresholds and escalation channels upfront so routine variances stay at the PM level while threshold breaches escalate cleanly."
+      },
+      {
+        id: 203,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Defining Success Metrics",
+        q: "At kickoff of a customer-portal modernization project, stakeholders only mention finishing on time and within budget. To establish comprehensive project governance, what else should you define in the governance and benefits framework?",
+        opts: [
+          "Daily individual developer keystroke metrics.",
+          "Measurable project success criteria and key performance indicators (KPIs) aligned with strategic business value, quality standards, and user adoption outcomes.",
+          "Only story point velocity targets for the first three sprints.",
+          "Vendor profit-margin benchmarks."
+        ],
+        a: 1,
+        m: "Task 3.1 (Define Success Metrics): Governance requires explicit, measurable success metrics linking project delivery to strategic business outcomes—not just triple-constraint dates."
+      },
+      {
+        id: 204,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Balancing Autonomy & Governance",
+        q: "Your organization requires all capital projects to pass formal quarterly financial stage-gate audits, yet your software delivery team uses two-week Scrum sprints. How should you balance project autonomy with organizational governance?",
+        opts: [
+          "Exempt the Scrum team from quarterly financial audits so they stay agile.",
+          "Maintain sprint-level self-organization for daily execution while mapping iterative release metrics and backlog milestones into the organization's quarterly governance gates.",
+          "Cancel two-week sprints and switch to quarterly waterfall phases.",
+          "Have the Scrum Master attend audits without sharing sprint metrics."
+        ],
+        a: 1,
+        m: "Task 3.1 (Balance Autonomy with Organizational Governance): Preserve team autonomy at the execution level while integrating transparent reporting into mandatory enterprise governance gates."
+      },
+      {
+        id: 205,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Ethical & Policy Governance",
+        q: "A senior stakeholder asks you to fast-track a vendor contract award by skipping the mandatory competitive bidding threshold outlined in corporate procurement policy, arguing the vendor is a trusted partner. How should you respond?",
+        opts: [
+          "Approve the sole-source award to protect the project schedule.",
+          "Uphold organizational governance policies and ethical standards by following the required competitive procurement process—or formal exception-approval governance if a valid sole-source justification exists.",
+          "Split the contract into two smaller purchase orders to stay below the bidding threshold.",
+          "Ask the vendor to begin work before the contract is signed."
+        ],
+        a: 1,
+        m: "Task 3.1 (Apply Organizational Policies & Ethical Standards): Never circumvent governance thresholds (such as splitting POs); adhere to corporate policies or use formal, auditable exception channels."
+      },
+
+      // ==================== HARD MODE BUSINESS ENV 3.1 GOVERNANCE (206 - 210) ====================
+      {
+        id: 206,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Governance Escalation Threshold Breach",
+        q: "You are managing a hybrid enterprise ERP integration governed by a steering committee charter that sets your change-approval authority at $15,000 and 5 days of schedule float. Midway through execution, a mandatory third-party tax-engine API update requires $28,000 in unbudgeted development and consumes 8 days on the critical path. The VP of Finance urges you to approve the work immediately using contingency reserves so quarter-end billing isn't disrupted. What should you do?",
+        opts: [
+          "Approve the $28,000 change immediately since the VP of Finance verbally endorsed it and quarter-end billing is critical.",
+          "Prepare a complete impact analysis and escalate the change request through the established governance escalation path to the steering committee/CCB because it exceeds your delegated authority thresholds.",
+          "Split the change into two $14,000 requests so each falls within your $15,000 approval limit.",
+          "Instruct the team to begin coding the API update now and seek retroactive governance sign-off next month."
+        ],
+        a: 1,
+        m: "Task 3.1 (Escalation Paths & Decision Authority): Never split requests to dodge thresholds or act on informal verbal overrides. When an impact breaches your defined governance tolerance, escalate immediately through formal governance channels."
+      },
+      {
+        id: 207,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Establishing Governance in a Multi-Entity Program",
+        q: "You are assigned to lead a high-visibility joint venture digital platform uniting two partner companies that have different risk tolerances, conflicting compliance sign-off rules, and no shared PMO standards. During initiation, technical leads want to start coding prototypes immediately, while executives are already disagreeing over who has final sign-off on release readiness. What should you do FIRST?",
+        opts: [
+          "Allow technical leads to start coding prototypes while executives negotiate governance rules informally.",
+          "Establish a formal joint project governance framework—defining decision-making authority, RACI roles, escalation paths, reporting cadence, and unified release sign-off criteria—before launching execution.",
+          "Adopt the larger partner company's governance policies unilaterally.",
+          "Defer governance decisions to the Product Owner to resolve sprint by sprint."
+        ],
+        a: 1,
+        m: "Task 3.1 (Establish Governance Structures Early): In multi-entity or ambiguous environments, establishing clear decision authority, escalation paths, and sign-off rules early prevents downstream political paralysis."
+      },
+      {
+        id: 208,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Governance Metrics Supporting Business Value",
+        q: "Six months into a multi-phase customer self-service transformation, your monthly steering committee dashboard reports 100% on-time milestone completion and a CPI of 1.02. However, the Chief Operating Officer challenges the value of the governance reports, noting that customer support ticket volume has not dropped and nobody can tell whether released features are actually achieving strategic objectives. How should you improve project governance?",
+        opts: [
+          "Add more granular task-completion percentages and developer velocity charts to the steering committee deck.",
+          "Collaborate with the sponsor, Business Owner, and steering committee to refine governance success metrics—integrating outcome-based KPIs (such as ticket deflection and customer adoption) alongside delivery metrics.",
+          "Explain to the COO that operational ticket volume is outside the project manager's governance scope.",
+          "Reduce steering committee meetings from monthly to quarterly."
+        ],
+        a: 1,
+        m: "Task 3.1 (Governance Supporting Business Value): Governance reporting must evolve beyond output tracking to measure outcome-based success metrics that validate ongoing business value throughout the lifecycle."
+      },
+      {
+        id: 209,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • OPAs & Governance Tailoring Conflict",
+        q: "You join a healthcare technology firm as project manager for an internal AI workflow pilot. Reviewing Organizational Process Assets (OPAs), you find a mandatory 25-step Enterprise Governance Checklist designed for multi-year patient-facing clinical systems. Following all 25 steps rigidly would consume 60% of your 12-week pilot budget, yet skipping governance controls violates corporate audit policy. What is your best action?",
+        opts: [
+          "Bypass the 25-step checklist since internal pilots do not affect patient safety directly.",
+          "Engage the PMO and governance compliance officers to formally tailor the OPA checklist—retaining mandatory security/ethical controls while scaling down clinical-trial steps proportional to the pilot's risk and magnitude.",
+          "Execute all 25 steps rigidly and request a 60% budget increase from the sponsor.",
+          "Document the checklist steps at project closure after the pilot finishes."
+        ],
+        a: 1,
+        m: "Task 3.1 (Tailoring Governance OPAs): Leverage organizational governance assets while formally tailoring controls with PMO/compliance approval to fit project size, risk, and context."
+      },
+      {
+        id: 210,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.1 • Pacing & Governance Discipline Under Time Pressure",
+        q: "During a critical regulatory reporting build, a senior compliance lead discovers a data-lineage discrepancy two days before a scheduled governance gate review. Fixing the lineage mapping requires four days of engineering effort and formal QA verification, but the division VP pressures you to mark the governance gate 'Passed' today so the project stays green on the executive scorecard while the team fixes it quietly next week. How must you respond?",
+        opts: [
+          "Mark the gate 'Passed with Conditions' without documenting the data-lineage discrepancy so the executive scorecard stays green.",
+          "Uphold governance integrity by transparently reporting the data-lineage gap at the gate review, recommending a formal 'Hold' or documented 'Conditional Pass' with clear remediation criteria, and refusing to falsify gate status.",
+          "Ask the QA lead to sign off on the lineage check early so the gate criteria are technically met.",
+          "Cancel the governance gate review and reschedule it after the fix is deployed."
+        ],
+        a: 1,
+        m: "Task 3.1 (Governance Integrity & Ethics): Never misrepresent stage-gate readiness or pressure QA to rubber-stamp incomplete controls; governance gates exist to surface objective risk transparently."
+      },// ==================== MEDIUM / CORE BUSINESS ENV 3.2 - 3.8 (211 - 220) ====================
+      {
+        id: 211,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Plan & Manage Compliance",
+        q: "During planning for a cross-border HR data analytics platform, your team identifies data-residency regulations requiring European employee records to remain stored on servers located within the EU. How should you incorporate this requirement into your project?",
+        opts: [
+          "Log it as a post-launch operational maintenance task for the IT infrastructure team.",
+          "Classify it as a mandatory compliance requirement, trace it in the requirements documentation, assign compliance ownership, and include EU residency verification in release acceptance criteria.",
+          "Ask the project sponsor to sign a waiver exempting the pilot release from EU data laws.",
+          "Store all data in the US initially and migrate EU records next year."
+        ],
+        a: 1,
+        m: "Task 3.2 (Plan & Manage Project Compliance): Statutory/regulatory requirements are non-negotiable constraints—identify, trace, assign ownership, and verify compliance before release."
+      },
+      {
+        id: 212,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Compliance Risk & Audit",
+        q: "Midway through a healthcare patient-portal build, an internal compliance specialist warns that a third-party chat widget logs unencrypted session metadata, violating HIPAA privacy standards. What should you do FIRST?",
+        opts: [
+          "Continue sprint execution and fix the logging issue during final user acceptance testing.",
+          "Assess the compliance gap and remediation options with the security/compliance lead and Product Owner, and prioritize immediate remediation before any patient data touches the system.",
+          "Disable the chat widget silently without informing the Product Owner.",
+          "Ask the third-party vendor to accept legal liability if a HIPAA audit occurs."
+        ],
+        a: 1,
+        m: "Task 3.2 (Compliance Remediation): Never defer known regulatory violations or rely on vendor indemnification—assess and remediate compliance exposures immediately."
+      },
+      {
+        id: 213,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.3 • Manage & Control Changes",
+        q: "In a predictive manufacturing equipment upgrade, the plant safety officer submits a change request to add emergency shutoff sensors after reviewing updated OSHA guidelines. You have logged the request and evaluated cost and schedule impacts. What is your NEXT step?",
+        opts: [
+          "Implement the sensor installation immediately since it relates to workplace safety.",
+          "Submit the change request and impact analysis to the Change Control Board (CCB) for formal approval per the Change Management Plan.",
+          "Update the cost and schedule baselines before submitting the request to the CCB.",
+          "Reject the request because the scope baseline is already locked."
+        ],
+        a: 1,
+        m: "Task 3.3 (Manage & Control Changes): Follow formal change governance—Log -> Assess Impact -> Submit to CCB -> Update Baselines -> Execute."
+      },
+      {
+        id: 214,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.4 • Remove Impediments & Manage Issues",
+        q: "During a daily standup, two developers report they have been blocked for 36 hours waiting for an external security team to provision firewall test credentials, threatening the sprint goal. What should you do FIRST?",
+        opts: [
+          "Log the delay in the risk register and review it at the next sprint retrospective.",
+          "Log the blocker as an active issue, take ownership as a servant leader to engage the security team lead directly, and escalate through governance channels if needed to clear the impediment quickly.",
+          "Tell the developers to use production credentials temporarily so testing stays on schedule.",
+          "Extend the sprint by two days to compensate for the wait time."
+        ],
+        a: 1,
+        m: "Task 3.4 (Remove Impediments & Manage Issues): An active blocker is an ISSUE, not a risk—actively intervene to remove organizational bottlenecks and protect team flow."
+      },
+      {
+        id: 215,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.5 • Plan & Manage Risk",
+        q: "During a risk review workshop, your team identifies a 40% probability that a sole-source hardware supplier will delay component delivery by three weeks, which would push out your critical path. You decide to qualify a secondary backup supplier now so you can switch seamlessly if needed. Which risk response strategy is this?",
+        opts: [
+          "Avoid",
+          "Transfer",
+          "Mitigate",
+          "Accept"
+        ],
+        a: 2,
+        m: "Task 3.5 (Risk Response Strategies): Qualifying a backup supplier reduces the impact/probability of a supply disruption (Mitigate). Transfer shifts financial liability (insurance/warranties); Avoid eliminates the threat entirely."
+      },
+      {
+        id: 216,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.6 • Continuous Improvement",
+        q: "Over the past three sprints, your hybrid team's retrospective action items have repeatedly failed to get implemented because developers treat them as optional side tasks alongside sprint stories. How should you improve the team's continuous improvement process?",
+        opts: [
+          "Cancel retrospectives for two sprints until the team catches up on feature work.",
+          "Limit retrospective improvements to one or two high-impact actions per sprint and add them directly to the Sprint Backlog with clear owners and acceptance criteria.",
+          "Assign all retrospective improvement tasks exclusively to the Scrum Master.",
+          "Escalate the team's lack of follow-through to functional managers."
+        ],
+        a: 1,
+        m: "Task 3.6 (Continuous Improvement): Make process improvements visible and actionable by putting top retrospective items directly into the Sprint Backlog."
+      },
+      {
+        id: 217,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.7 • Support Organizational Change",
+        q: "Your project is replacing a manual spreadsheet inventory workflow with an automated barcode system across four regional distribution centers. What is the most effective way to assess organizational readiness before rollout?",
+        opts: [
+          "Send an all-hands email announcing the launch date and attaching a 60-page user manual.",
+          "Assess cultural readiness, workflow impacts, and skill gaps across warehouse staff and supervisors, then tailor training, communications, and local change-champion support.",
+          "Assume readiness once system integration testing passes with zero defects.",
+          "Mandate that warehouse supervisors enforce compliance on day one."
+        ],
+        a: 1,
+        m: "Task 3.7 (Support Organizational Change): Technical readiness does not equal human readiness—assess cultural/operational readiness and equip change champions and end users before cutover."
+      },
+      {
+        id: 218,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.7 • Overcoming End-User Resistance",
+        q: "Two weeks after launching a new CRM platform for a 150-person sales division, adoption is stalling at 35% because veteran account executives claim the new pipeline screens slow down their client calls. What should you do NEXT?",
+        opts: [
+          "Ask the VP of Sales to tie quarterly commissions to CRM login counts immediately.",
+          "Conduct listening sessions with veteran account executives to identify specific workflow friction, feed high-value usability fixes into the backlog, and pair hesitant users with peer champions.",
+          "Close the project since technical deployment and initial training were completed.",
+          "Revert the sales division back to the legacy CRM system."
+        ],
+        a: 1,
+        m: "Task 3.7 (Support Organizational Change): Diagnose the root cause of user resistance empathetically, address real usability friction, and leverage peer champions rather than relying solely on executive mandates."
+      },
+      {
+        id: 219,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.8 • Evaluate External Business Env Changes",
+        q: "Midway through developing a B2B logistics pricing engine, Congress passes new federal freight emissions reporting rules taking effect before your scheduled product launch. What should you do FIRST?",
+        opts: [
+          "Continue building the original scope and plan an emissions update for Version 2.0 next year.",
+          "Evaluate the regulatory impact on project scope, backlog priorities, cost, and schedule with legal, compliance, and the Product Owner, and update project plans accordingly.",
+          "Pause the project indefinitely until industry competitors release their solutions.",
+          "Ask the sponsor to absorb potential regulatory fines out of management reserves."
+        ],
+        a: 1,
+        m: "Task 3.8 (Evaluate External Business Environment Changes): External legislative/regulatory shifts require immediate impact assessment across scope, value, schedule, and compliance baselines."
+      },
+      {
+        id: 220,
+        mode: "CORE",
+        domain: "BUSINESS",
+        tag: "Task 3.8 • External Market & Competitor Shifts",
+        q: "While managing an agile retail mobile-app project, a major competitor launches a popular curbside-pickup feature that rapidly captures market share from your company's stores. How should you respond?",
+        opts: [
+          "Stick strictly to the approved release roadmap to avoid disrupting team velocity.",
+          "Facilitate a value-reassessment session with the Product Owner and business stakeholders to evaluate reprioritizing curbside-pickup capabilities into upcoming sprints.",
+          "Instruct developers to copy the competitor's interface immediately without consulting the Product Owner.",
+          "Log the competitor's launch in the lessons learned register at project closure."
+        ],
+        a: 1,
+        m: "Task 3.8 (External Market Shifts): Continuously scan external competitive dynamics and collaborate with the Product Owner to reprioritize backlog value so the product remains competitive."
+      },
+
+      // ==================== HARD MODE BUSINESS ENV 3.2 - 3.8 (221 - 235) ====================
+      {
+        id: 221,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Multi-Jurisdiction Compliance Conflict",
+        q: "You are leading a global customer-identity platform deploying simultaneously in North America and the European Union. Three weeks before release, legal counsel notifies you that a newly enacted EU artificial-intelligence transparency rule requires explicit algorithmic explainability disclosures before automated credit scoring can run, whereas North American operations have no such restriction and demand launching on time to capture holiday revenue. What should you recommend?",
+        opts: [
+          "Launch globally on schedule and add the EU explainability disclosures in a fast-follow sprint two weeks later.",
+          "Collaborate with legal, compliance, the Product Owner, and sponsor to decouple the release—deploying the compliant North American release on schedule while holding EU activation until the mandatory explainability controls are implemented and verified.",
+          "Disable credit scoring globally until EU rules are clarified.",
+          "Ask the sponsor to sign a compliance risk-acceptance memo so the EU launch proceeds on time."
+        ],
+        a: 1,
+        m: "Task 3.2 (Plan & Manage Project Compliance): Never ship a non-compliant product into a regulated jurisdiction. Decoupling regional releases protects business value in compliant markets while ensuring strict statutory adherence in the EU."
+      },
+      {
+        id: 222,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Vendor Sub-Processor Compliance Gap",
+        q: "During a routine compliance audit of your hybrid healthcare analytics project, you discover that your primary cloud-hosting vendor quietly subcontracted nightly database backup storage to a secondary sub-processor that lacks SOC 2 Type II and HIPAA Business Associate certification. Your go-live is in 10 days. What should you do FIRST?",
+        opts: [
+          "Proceed with go-live in 10 days and give the vendor 60 days post-launch to certify its sub-processor.",
+          "Immediately notify your legal, privacy/compliance, and procurement leads, halt any migration of protected health data, assess contractual remedies and compliant backup alternatives, and escalate the go-live impact to the sponsor.",
+          "Switch backup storage to an unapproved internal server without informing the vendor.",
+          "Ask the vendor to remove the sub-processor reference from its compliance documentation."
+        ],
+        a: 1,
+        m: "Task 3.2 (Compliance & Vendor Governance): Third-party sub-processor noncompliance exposes the organization to severe statutory liability. Halt protected data exposure immediately, engage legal/compliance/procurement, and escalate schedule impacts transparently."
+      },
+      {
+        id: 223,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Sustainability & Environmental Compliance",
+        q: "You are managing a predictive industrial manufacturing facility upgrade. Midway through equipment installation, an environmental compliance inspection reveals that the newly delivered solvent-cleaning stations emit volatile organic compounds (VOCs) slightly above updated state air-quality permit limits, even though the equipment met the original RFP specifications drafted 14 months ago. What should you do?",
+        opts: [
+          "Commission the cleaning stations as planned because they satisfied the original RFP specifications.",
+          "Engage environmental compliance specialists, engineering, and procurement to evaluate scrubber/filtration retrofits, quantify cost and schedule impacts, and route a formal change request to achieve full regulatory compliance before operation.",
+          "Operate the stations at 50% capacity during daytime hours so emissions stay below daily averages.",
+          "Force the equipment vendor to absorb the retrofit cost unilaterally without reviewing contract terms."
+        ],
+        a: 1,
+        m: "Task 3.2 (Compliance Over Original Specs): Meeting outdated RFP specs never excuses violating current environmental permits. Assess compliant technical retrofits and route through formal change control."
+      },
+      {
+        id: 224,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.2 • Compliance Verification & Audit Trail",
+        q: "Your agile financial-services team uses automated CI/CD pipelines to deploy microservices every two weeks. Ahead of an upcoming external SOX (Sarbanes-Oxley) financial audit, internal auditors warn that your team lacks traceable evidence linking code commits to approved business requirements and independent peer reviews. What is the best solution?",
+        opts: [
+          "Pause agile deployments and return to manual quarterly waterfall releases.",
+          "Embed automated compliance traceability into the team's workflow and Definition of Done—linking user stories, pull-request approvals, and automated test logs in your ALM tool so audit evidence is generated continuously.",
+          "Assign a junior developer to manually reconstruct approval spreadsheets at the end of each quarter.",
+          "Tell the auditors that agile teams rely on working software rather than audit documentation."
+        ],
+        a: 1,
+        m: "Task 3.2 (Compliance Integration in Agile): Satisfy statutory audit controls without killing agility by automating traceability and approval gates directly inside the CI/CD pipeline and Definition of Done."
+      },
+      {
+        id: 225,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.3 • Scope & Baseline Control Under Executive Pressure",
+        q: "During execution of a predictive municipal water-treatment plant upgrade, the city's Chief Engineer asks your field superintendent to reroute an underground chemical feed pipe by 40 feet to simplify future maintenance access, stating he will 'square up the paperwork next month.' The rerouting requires an extra $22,000 in specialized piping and adds 4 days to a critical-path trenching activity. What should you do FIRST?",
+        opts: [
+          "Allow the field superintendent to reroute the pipe now so trenching isn't delayed while waiting for paperwork.",
+          "Instruct the field team to follow the approved baseline until a formal change request is logged, evaluated for full cost/schedule/safety impact, and approved through the Change Control Board.",
+          "Approve the $22,000 rerouting yourself using contingency reserves.",
+          "Log the rerouting as a completed variance in the next monthly status report."
+        ],
+        a: 1,
+        m: "Task 3.3 (Manage and Control Changes): Never execute unauthorized baseline changes based on informal verbal promises—halt unapproved deviations and route through formal impact assessment and CCB approval."
+      },
+      {
+        id: 226,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.4 • Systemic Organizational Impediment",
+        q: "Across four consecutive sprints, your agile product team has lost 20% of its capacity because every database schema update requires submitting a manual ticket to a centralized DBA committee that meets only once every three weeks. Escalating individual tickets only produces one-off favors. What is the most sustainable way to remove this impediment?",
+        opts: [
+          "Pad every database story estimate by 40% to absorb the three-week committee wait time.",
+          "Collaborate with the DBA leadership, enterprise architects, and sponsor to establish a systemic fix—such as embedding a dedicated DBA into the squad or implementing automated schema-migration guardrails with pre-approved templates.",
+          "Instruct developers to hardcode data structures in the application layer to bypass database schema changes.",
+          "Escalate each individual DBA ticket to the CIO every sprint."
+        ],
+        a: 1,
+        m: "Task 3.4 (Remove Impediments): When a bottleneck is systemic rather than one-off, fix the underlying organizational constraint (embedded specialist or automated governance guardrails) rather than padding estimates."
+      },
+      {
+        id: 227,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.5 & 3.6 • Risk Reserve vs. Process Improvement",
+        q: "During a hybrid cloud migration, three separate workstreams experience unexpected data-corruption errors during automated ETL loads, consuming 70% of your project's contingency reserve. Root-cause analysis shows that teams are skipping schema-validation dry runs because environment refreshes take too long. What should you do?",
+        opts: [
+          "Request additional management reserves from the sponsor to replenish your contingency fund.",
+          "Implement a continuous process improvement—automating faster environment refreshes and adding mandatory schema-validation dry runs to the Definition of Done—while updating the risk register and reassessing remaining contingency exposure.",
+          "Switch back to manual ETL data loads for the remainder of the migration.",
+          "Accept the remaining data-corruption risk since 30% of contingency reserve still remains."
+        ],
+        a: 1,
+        m: "Task 3.5 & 3.6 (Risk + Continuous Improvement): Don't just ask for more reserve money to cover preventable rework—eliminate the root cause through process improvement and update your risk exposure."
+      },
+      {
+        id: 228,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.7 • Cultural Resistance Across Acquired Business Units",
+        q: "You are leading the rollout of a unified enterprise PMO and project-tracking platform across a parent company and a recently acquired software startup. While the parent company's teams adopt the standardized dashboards quickly, the startup's engineering leads boycott the platform, viewing it as bureaucratic micromanagement that threatens their autonomous culture. What should you do FIRST?",
+        opts: [
+          "Ask the parent company's CIO to mandate compliance and revoke the startup's legacy tracking tools immediately.",
+          "Meet with the startup's engineering leads to listen to their cultural concerns, clarify how the platform reduces executive status interruptions while preserving team autonomy, and co-design lightweight integration workflows.",
+          "Exempt the startup permanently from enterprise reporting.",
+          "Hire external change-management consultants to run mandatory compliance seminars for the startup."
+        ],
+        a: 1,
+        m: "Task 3.7 (Support Organizational Change): Cultural resistance in mergers/acquisitions requires empathetic dialogue, demonstrating 'what's in it for them' (less status overhead), and co-creating lightweight adoption paths."
+      },
+      {
+        id: 229,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.7 • Sustaining Organizational Change Post-Rollout",
+        q: "Six weeks after deploying an AI-assisted clinical triage system across a hospital network, initial adoption was 88%, but recent usage metrics show nurses are steadily reverting to manual paper intake forms during busy evening shifts. Investigation reveals that evening charge nurses weren't included in the initial super-user champion program and lack quick floor support when edge cases arise. What should you do?",
+        opts: [
+          "Remove all paper intake forms from the hospital wards immediately.",
+          "Recruit and train respected evening-shift charge nurses as peer change champions, streamline the UI workflow for high-volume evening edge cases, and establish shift-specific floor coaching.",
+          "Report to the sponsor that the project succeeded because initial launch adoption reached 88%.",
+          "Send a hospital-wide policy reminder requiring electronic intake on all shifts."
+        ],
+        a: 1,
+        m: "Task 3.7 (Sustaining Organizational Change): Change adoption decays without reinforcement across all operational shifts. Build peer champion coverage on evening shifts and fix edge-case workflow friction."
+      },
+      {
+        id: 230,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.7 • Executive Sponsorship & Change Coalition",
+        q: "You are managing an enterprise-wide transition from annual performance reviews to continuous agile feedback loops across 1,200 employees. Midway through rollout, a key executive sponsor transfers to another division, and several department VPs immediately pause participation in their business units, claiming 'year-end operational priorities take precedence.' What should you do FIRST?",
+        opts: [
+          "Pause the rollout across the entire company until a new executive sponsor is appointed.",
+          "Engage the incoming sponsor and executive leadership team to re-establish visible sponsorship, realign the change vision with department VPs' operational goals, and rebuild the guiding coalition.",
+          "Continue rolling out the program solely in the departments that haven't paused.",
+          "Escalate the non-participating VPs to the CEO for formal reprimand."
+        ],
+        a: 1,
+        m: "Task 3.7 (Support Organizational Change): Active executive sponsorship is the #1 predictor of organizational change success. When a sponsor departs, immediately secure and align the replacement sponsor and leadership coalition."
+      },
+      {
+        id: 231,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.7 • Measuring Change Adoption Outcomes",
+        q: "Your project team has completed building and deploying a new supplier self-service onboarding portal on schedule and under budget, and 100% of procurement specialists completed classroom training. Before transitioning the initiative to operations, how should you verify that organizational change objectives have truly been achieved?",
+        opts: [
+          "Confirm that all training attendance sheets are signed and archived in the lessons learned repository.",
+          "Measure actual behavioral adoption and business proficiency metrics—such as percentage of new suppliers onboarded through the portal without manual workarounds, error reduction, and user confidence surveys.",
+          "Verify that the IT helpdesk has closed all deployment tickets.",
+          "Obtain technical sign-off from the lead software architect."
+        ],
+        a: 1,
+        m: "Task 3.7 (Support Organizational Change): Training completion is an output; true organizational change is measured by sustained behavioral adoption and operational proficiency."
+      },
+      {
+        id: 232,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.8 • Macroeconomic & Interest Rate Shift",
+        q: "You are managing a 24-month predictive commercial real-estate and smart-building development project financed through variable-rate corporate credit facilities. Halfway through construction, central bank interest rate hikes sharply increase your company's cost of capital, and the CFO asks you to re-evaluate the project's financial viability. What should you do?",
+        opts: [
+          "Continue construction without changes because the Project Charter was approved at the lower interest rate.",
+          "Collaborate with corporate finance and the sponsor to recalculate Net Present Value (NPV) and ROI using the updated discount rate, evaluate phased value-engineering or scope-staging options, and present recommendations to governance.",
+          "Cut building sustainability certifications immediately to offset higher interest expenses.",
+          "Freeze all contractor payments until interest rates decline."
+        ],
+        a: 1,
+        m: "Task 3.8 (Evaluate External Business Environment Changes): Macroeconomic shifts (interest rates/cost of capital) directly alter project NPV and Business Case viability—re-evaluate financial justification with finance and governance."
+      },
+      {
+        id: 233,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.8 • Emerging Technology Disruption (AI)",
+        q: "Six months into a 12-month project to build a custom rule-based customer-support chatbot, generative AI foundation models advance rapidly and your enterprise cloud provider releases a native, compliant conversational AI service that outperforms your rule-based design at 30% lower operating cost. Your team has spent half the budget. What should you do FIRST?",
+        opts: [
+          "Finish building the rule-based chatbot so the money already spent is not wasted.",
+          "Facilitate a technical and business-value reassessment with the Product Owner, enterprise architects, and sponsor—treating past spend as a sunk cost—to evaluate pivoting the remaining budget toward the native AI service.",
+          "Ask developers to start experimenting with the new AI service without informing the sponsor.",
+          "Cancel the project immediately and lay off the development team."
+        ],
+        a: 1,
+        m: "Task 3.8 (External Technological Shifts): When external technology leaps render your planned architecture obsolete, avoid the sunk-cost fallacy and evaluate pivoting with leadership to maximize net value."
+      },
+      {
+        id: 234,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.8 • External Partner / Ecosystem Dependency",
+        q: "Your agile team is building an e-commerce logistics integration relying heavily on a major shipping carrier's public tracking API. Two months before launch, the carrier abruptly announces a new tiered API pricing model that will increase your projected transaction fees by 400% at scale, eroding your product's profit margin. What should you do?",
+        opts: [
+          "Ignore the pricing change until post-launch operational budgets are reviewed next year.",
+          "Assess the financial impact on the Business Case, evaluate alternative multi-carrier APIs or caching architectures with technical leads and the Product Owner, and reprioritize the backlog to protect product profitability.",
+          "Pass the 400% fee increase directly to customers without consulting business stakeholders.",
+          "Halt all sprint work until the shipping carrier reverses its pricing policy."
+        ],
+        a: 1,
+        m: "Task 3.8 (External Business Ecosystem Changes): External vendor pricing shifts directly threaten Business Case viability—quantify the margin impact and adapt technical architecture/backlog priorities with the PO and sponsor."
+      },
+      {
+        id: 235,
+        mode: "HARD",
+        domain: "BUSINESS",
+        tag: "Task 3.8 • Social & Demographic Market Shift",
+        q: "While developing a multi-year urban residential micro-mobility subscription app, municipal transit data and demographic surveys reveal a sharp post-pandemic shift toward hybrid remote work—reducing weekday commuter trips by 35% while increasing weekend recreational and short-errand trips by 50%. How should you respond?",
+        opts: [
+          "Deliver the original commuter-focused subscription tiers as defined in the initial Business Case.",
+          "Bring the empirical market data to the Product Owner and executive sponsor to recalibrate target customer personas, adjust pricing/feature hypotheses, and reprioritize the Product Backlog toward flexible weekend and errand bundles.",
+          "Increase marketing spend to force weekday commuter adoption.",
+          "Close the project because the original commuter assumption changed."
+        ],
+        a: 1,
+        m: "Task 3.8 (Social & Market Environment Changes): Adapt product strategy and backlog priorities when empirical external demographic/behavioral shifts alter customer demand."
       }
     ];
 
