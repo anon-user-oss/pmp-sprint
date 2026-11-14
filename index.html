@@ -77,11 +77,11 @@
   <!-- Mode Switcher Landing Cards -->
   <div class="mode-grid">
     <button class="mode-card active-core" id="btn-mode-core" onclick="switchMode('CORE')">
-      <span class="mode-title mode-core-text">Core Mindset (75)</span>
+      <span class="mode-title mode-core-text" id="core-card-title">Core Mindset</span>
       <span class="mode-sub">Fast-twitch domain rules</span>
     </button>
     <button class="mode-card" id="btn-mode-hard" onclick="switchMode('HARD')">
-      <span class="mode-title mode-hard-text">Hard Mode (25)</span>
+     <span class="mode-title mode-hard-text" id="hard-card-title">Hard Mode</span>
       <span class="mode-sub">Long stems & verb traps</span>
     </button>
   </div>
@@ -1301,7 +1301,8 @@
       rebuildDeck();
     }
 
-    function rebuildDeck() {
+    function rebuildDeck() {document.getElementById("core-card-title").textContent = `Core Mindset (${fullBank.filter(q => q.mode === "CORE").length})`;
+      document.getElementById("hard-card-title").textContent = `Hard Mode (${fullBank.filter(q => q.mode === "HARD").length})`;
       const modePool = fullBank.filter(q => q.mode === currentMode);
       
       // Update filter button counts dynamically for active mode
